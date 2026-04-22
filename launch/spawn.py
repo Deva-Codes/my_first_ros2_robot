@@ -34,7 +34,7 @@ def generate_launch_description():
         output = 'screen', 
         arguments =[ '-topic', 'robot_description', 
             '-name', 'my_first_robot' ,
-               '-z','0.5' ,'-y','100' ] 
+               '-z','0.5' ] 
     )
     
     return LaunchDescription([
