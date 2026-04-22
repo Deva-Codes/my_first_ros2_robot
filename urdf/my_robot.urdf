@@ -55,7 +55,7 @@
         </inertial>
     </link>
     
-    <joint name="leftwheel_base" type="continuous">
+    <joint name="left_wheel_base" type="continuous">
         <parent link="base_link"/>
         <child link="left_wheel"/>
         <origin xyz="-0.25 -0.32 -0.25"/>
