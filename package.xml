@@ -1,0 +1,15 @@
+<?xml version = "1.0"?>
+<package format = "3">
+    <name>my_package</name>
+    <version>0.0.1</version>
+    <description>My custom r2d2 robot package built the hard way.</description>
+    <maintainer email = "devavaddi0710@gmail.com">deva-kaushik</maintainer>
+    <license>Apache-2.0</license>
+    <buildtool_depend>ament_cmake</buildtool_depend>
+    <exec_depend>ros_gz_sim</exec_depend>
+    <exec_depend>robot_state_publisher</exec_depend>
+    <export>
+        <build_type>ament_cmake</build_type>
+
+    </export>
+</package>
