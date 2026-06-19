@@ -36,11 +36,26 @@ def generate_launch_description():
             '-name', 'my_first_robot' ,
                '-z','0.5' ] 
     )
+
+    start_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        arguments=[
+            '/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
+            '/imu@sensor_msgs/msg/Imu@gz.msgs.IMU',
+            '/gps@sensor_msgs/msg/NavSatFix@gz.msgs.NavSat',
+            '/camera@sensor_msgs/msg/Image@gz.msgs.Image',
+            '/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo',
+            '/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan',
+        ],
+        output='screen'
+    )
     
     return LaunchDescription([
         start_gazebo,
         start_robot_state_publisher,
-        spawn_the_robot
+        spawn_the_robot,
+        start_bridge
     ])
 
 

@@ -8,12 +8,12 @@
         <color rgba="0 0 0.8 1"/>
     </material>
 
-   <link name="base_footprint"/>
-<joint name="basefootprint_base" type="fixed">
-    <parent link="base_footprint"/>
-    <child link="base_link"/>
-    <origin xyz="0 0 0.45" rpy="0 0 0"/>
-</joint>
+    <link name="base_footprint"/>
+    <joint name="basefootprint_base" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0.45" rpy="0 0 0"/>
+    </joint>
 
     <link name="base_link">
         <visual>
@@ -30,7 +30,7 @@
         <inertial>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <mass value="100.0"/>
-            <inertia ixx="2.41" ixy="0.0" ixz="0.0" iyy="3.33" iyz="0.0" izz="5.08"/>
+            <inertia ixx="4.167" ixy="0.0" ixz="0.0" iyy="10.417" iyz="0.0" izz="10.417"/>
         </inertial>
     </link>
 
@@ -58,8 +58,9 @@
     <joint name="left_wheel_base" type="continuous">
         <parent link="base_link"/>
         <child link="left_wheel"/>
-        <origin xyz="-0.25 -0.32 -0.25"/>
+        <origin xyz="0.25 -0.32 -0.25"/>
         <axis xyz="0.0 1.0 0.0"/>
+        <limit effort="1000.0" velocity="20.0"/>
     </joint>
 
     <link name="right_wheel">
@@ -86,8 +87,9 @@
     <joint name="right_wheel_base" type="continuous">
         <parent link="base_link"/>
         <child link="right_wheel"/>
-        <origin xyz="-0.25 0.32 -0.25"/>
+        <origin xyz="0.25 0.32 -0.25"/>
         <axis xyz="0.0 1.0 0.0"/>
+        <limit effort="1000.0" velocity="20.0"/>
     </joint>
 
     <link name="castor_wheel">
@@ -112,11 +114,24 @@
     <joint name="castorwheel_base_link" type="fixed">
         <parent link="base_link"/>
         <child link="castor_wheel"/>
-        <origin xyz="0.25 0 -0.35"/>
+        <origin xyz="-0.25 0 -0.35"/>
     </joint>
-   <gazebo>
-    <plugin filename="libcustom_drive.so" name="my_robot::CustomDrive">
-    </plugin>
-</gazebo>
+
+   
+
+    <gazebo reference="left_wheel">
+        <mu1>10.5</mu1>
+        <mu2>10.5</mu2>
+    </gazebo>
+
+    <gazebo reference="right_wheel">
+        <mu1>10.5</mu1>
+        <mu2>10.5</mu2>
+    </gazebo>
+    
+    <gazebo reference="castor_wheel">
+        <mu1>0.0</mu1>
+        <mu2>0.0</mu2>
+    </gazebo>
     
 </robot>
