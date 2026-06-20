@@ -28,9 +28,8 @@
             </geometry>
         </collision>
         <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="100.0"/>
-            <inertia ixx="4.167" ixy="0.0" ixz="0.0" iyy="10.417" iyz="0.0" izz="10.417"/>
+            <mass value="5.0"/>
+            <inertia ixx="0.2083" ixy="0.0" ixz="0.0" iyy="0.5208" iyz="0.0" izz="0.5208"/>
         </inertial>
     </link>
 
@@ -49,9 +48,8 @@
             <origin rpy="1.5705 0 0"/>
         </collision>
         <inertial>
-            <origin rpy="1.5705 0 0"/>
             <mass value="1.0"/>
-            <inertia ixx="0.0108" ixy="0.0" ixz="0.0" iyy="0.0108" iyz="0.0" izz="0.02"/>
+            <inertia ixx="0.010833" ixy="0.0" ixz="0.0" iyy="0.010833" iyz="0.0" izz="0.02"/>
         </inertial>
     </link>
     
@@ -60,7 +58,6 @@
         <child link="left_wheel"/>
         <origin xyz="0.25 -0.32 -0.25"/>
         <axis xyz="0.0 1.0 0.0"/>
-        <limit effort="1000.0" velocity="20.0"/>
     </joint>
 
     <link name="right_wheel">
@@ -78,9 +75,8 @@
             <origin rpy="-1.5705 0 0"/>
         </collision>
         <inertial>
-            <origin rpy="-1.5705 0 0"/>
             <mass value="1.0"/>
-            <inertia ixx="0.0108" ixy="0.0" ixz="0.0" iyy="0.0108" iyz="0.0" izz="0.02"/>
+            <inertia ixx="0.010833" ixy="0.0" ixz="0.0" iyy="0.010833" iyz="0.0" izz="0.02"/>
         </inertial>
     </link>
     
@@ -89,7 +85,6 @@
         <child link="right_wheel"/>
         <origin xyz="0.25 0.32 -0.25"/>
         <axis xyz="0.0 1.0 0.0"/>
-        <limit effort="1000.0" velocity="20.0"/>
     </joint>
 
     <link name="castor_wheel">
@@ -105,7 +100,6 @@
             </geometry>
         </collision>
         <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
             <mass value="0.5"/>
             <inertia ixx="0.002" ixy="0.0" ixz="0.0" iyy="0.002" iyz="0.0" izz="0.002"/>
         </inertial>
@@ -117,21 +111,4 @@
         <origin xyz="-0.25 0 -0.35"/>
     </joint>
 
-   
-
-    <gazebo reference="left_wheel">
-        <mu1>10.5</mu1>
-        <mu2>10.5</mu2>
-    </gazebo>
-
-    <gazebo reference="right_wheel">
-        <mu1>10.5</mu1>
-        <mu2>10.5</mu2>
-    </gazebo>
-    
-    <gazebo reference="castor_wheel">
-        <mu1>0.0</mu1>
-        <mu2>0.0</mu2> 
-    </gazebo>
-    
 </robot>
