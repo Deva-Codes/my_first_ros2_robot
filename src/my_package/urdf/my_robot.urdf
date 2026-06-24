@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<robot name="my_robot">
+    <link name = "base_footprint"/>
+    <joint name = "base_footprint_base" type = "fixed">
+        <parent link = "base_footprint"/>
+        <child link = "base_link"/>
+        <origin xyz = "0 0 .4"/>
+    </joint>
+    
+    <link name="base_link">
+        <visual>
+            <geometry><box size="1.0 0.75 .4"/></geometry>
+        </visual>
+        <collision>
+            <geometry><box size="1.0 0.75 0.4"/></geometry>
+        </collision>
+        <inertial>
+            <mass value="10.0"/>
+            <inertia ixx="0.5" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="0.5"/>
+        </inertial>
+    </link>
+
+    <link name="left_wheel">
+        <visual>
+            <origin rpy="-1.57 0 0"/>
+            <geometry><cylinder radius="0.2" length="0.1"/></geometry>
+        </visual>
+        <collision>
+            <origin rpy="-1.57 0 0"/>
+            <geometry><cylinder radius="0.2" length="0.1"/></geometry>
+        </collision>
+        <inertial>
+            <mass value="1.0"/>
+            <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+        </inertial>
+    </link>
+    
+    <gazebo reference="left_wheel">
+        <mu1>10.0</mu1>
+        <mu2>10.0</mu2>
+    </gazebo>
+
+    <joint name="base_left_wheel" type="continuous">
+        <parent link="base_link"/>
+        <child link="left_wheel"/>
+        <origin xyz="-.25 .43 -.2"/>
+        <axis xyz="0.0 1.0 0.0"/>
+    </joint>
+
+    <link name="right_wheel">
+        <visual>
+            <origin rpy="1.57 0 0"/>
+            <geometry><cylinder radius="0.2" length="0.1"/></geometry>
+        </visual>
+        <collision>
+            <origin rpy="1.57 0 0"/>
+            <geometry><cylinder radius="0.2" length="0.1"/></geometry>
+        </collision>
+        <inertial>
+            <mass value="1.0"/>
+            <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+        </inertial>
+    </link>
+
+    <gazebo reference="right_wheel">
+        <mu1>10.0</mu1>
+        <mu2>10.0</mu2>
+    </gazebo>
+
+    <joint name="base_right_wheel" type="continuous">
+        <parent link="base_link"/>
+        <child link="right_wheel"/>
+        <origin xyz="-.25 -.43 -.2"/>
+        <axis xyz="0.0 1.0 0.0"/>
+    </joint>
+
+    <link name="castor_wheel">
+        <visual>
+            <geometry><sphere radius="0.1"/></geometry>
+        </visual>
+        <collision>
+            <geometry><sphere radius="0.1"/></geometry>
+        </collision>
+        <inertial>
+            <mass value="0.5"/>
+            <inertia ixx="0.002" ixy="0.0" ixz="0.0" iyy="0.002" iyz="0.0" izz="0.002"/>
+        </inertial>
+    </link>
+
+    <gazebo reference="castor_wheel">
+        <mu1>0.0</mu1>
+        <mu2>0.0</mu2>
+    </gazebo>
+
+    <joint name="base_castor_wheel" type="fixed">
+        <parent link="base_link"/>
+        <child link="castor_wheel"/>
+        <origin xyz=".5 0 -.3"/>
+    </joint>
+    
+</robot>
