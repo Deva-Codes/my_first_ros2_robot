@@ -11,7 +11,7 @@ def generate_launch_description():
     pkg_name = "my_package"
     urdf_file_name = "my_robot.urdf"
     urdf_file_path = os.path.join(get_package_share_directory(pkg_name),'urdf',urdf_file_name)
-    rviz_file_name = "my_robot.rviz"
+    rviz_file_name = "new.rviz"
     rviz_file_path = os.path.join(get_package_share_directory(pkg_name),'rviz',rviz_file_name)
 
 
@@ -44,7 +44,7 @@ def generate_launch_description():
         executable='rviz2',
         name='rviz2',
         output='screen',
-      #  arguments=['-d',rviz_file_path]
+        arguments=['-d',rviz_file_path]
     )
     jsp_node = Node(
         package='joint_state_publisher',
