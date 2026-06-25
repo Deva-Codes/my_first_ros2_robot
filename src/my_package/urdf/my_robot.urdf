@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
-<robot name="my_robot">
+<robot name="my_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+      
+   <xacro:include filename="$(find my_package)/urdf/my_robot.gazebo" />
     <link name = "base_footprint"/>
     <joint name = "base_footprint_base" type = "fixed">
         <parent link = "base_footprint"/>
@@ -97,5 +99,20 @@
         <child link="castor_wheel"/>
         <origin xyz=".5 0 -.3"/>
     </joint>
+
+    <gazebo reference="left_wheel">
+  <material>Gazebo/Blue</material>
+</gazebo>
+
+<gazebo reference="right_wheel">
+  <material>Gazebo/Blue</material>
+</gazebo>
+<gazebo reference="base_link">
+  <material>Gazebo/Red</material>
+
+</gazebo>
+<gazebo reference="castor_wheel">
+  <material>Gazebo/Blue</material>
+</gazebo>
     
 </robot>
