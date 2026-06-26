@@ -95,5 +95,38 @@
       name="gz::sim::systems::Imu">
     </plugin>
 </gazebo>
+
+  <gazebo reference="navsat_link">
+    <sensor name="navsat" type="navsat">
+      <always_on>1</always_on>
+      <update_rate>1</update_rate>
+      <topic>navsat</topic>
+      <navsat>
+    <position_sensing>
+      <horizontal>
+        <noise type="gaussian">
+          <mean>0.0</mean>
+          <stddev>1.0</stddev> </noise>
+      </horizontal>
+    </position_sensing>
+  </navsat>
+      <gz_frame_id>navsat_link</gz_frame_id>
+    </sensor>
+  </gazebo>
+  <gazebo>
+      <plugin
+      filename="gz-sim-navsat-system"
+      name="gz::sim::systems::NavSat">
+    </plugin>
+    <!-- Set the coordinates for the world origin -->
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <world_frame_orientation>ENU</world_frame_orientation>
+      <latitude_deg>47.478950</latitude_deg>
+      <longitude_deg>19.057785</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    </gazebo>
  
 </robot>

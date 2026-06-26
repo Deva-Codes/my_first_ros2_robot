@@ -12,7 +12,7 @@ from launch import LaunchDescription
 
 def generate_launch_description():
     pkg_my_package =get_package_share_directory('my_package')#path to the package
-    
+    ekf_config_file_path = os.path.join(pkg_my_package,"config","ekf1.yaml")
 
     gazebo_models_path,ignore = os.path.split(pkg_my_package) # just in case if you have any model file in your package
     os.environ["GZ_SIM_RESOURCE_PATH"] += os.pathsep + gazebo_models_path
@@ -119,10 +119,18 @@ def generate_launch_description():
             #"/camera/image@sensor_msgs/msg/Image@gz.msgs.Image",
             "/camera/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo",
             "imu@sensor_msgs/msg/Imu@gz.msgs.IMU",
+            "/navsat@sensor_msgs/msg/NavSatFix@gz.msgs.NavSat",
 
         ], 
         output = "screen", 
         parameters=[{"use_sim_time":True},]
+    )
+    ekf_node = Node(
+        package= "robot_localization",
+        executable = 'ekf_node',
+        name = 'ekf_filter_node',
+        output = "screen",
+        parameters = [ekf_config_file_path,{"use_sim_time": True}]
     )
     return LaunchDescription([
         world_arg,
@@ -135,7 +143,8 @@ def generate_launch_description():
         rviz_node, ros2_bridge_node,
         gz_image_bridge_node, 
         relay_camera_info_node,
-        relay_wide_camera_info_node]
+        relay_wide_camera_info_node,
+        ekf_node]
 
     )
 

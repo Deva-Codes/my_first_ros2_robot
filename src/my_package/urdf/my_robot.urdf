@@ -164,6 +164,16 @@
     
     </joint>
 
+    <link name = "navsat_link"/>
+    <joint name = "base_navsat" type = "fixed">
+        <parent link="base_link"/>
+        <child link="navsat_link"/>
+        <origin xyz = "0 0 0" rpy = "0 0 0"/>
+        
+    </joint>
+
+    
+
 
     
 </robot>
