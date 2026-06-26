@@ -31,6 +31,7 @@ def generate_launch_description():
         'model',
         default_value="my_robot.urdf"
         , description="the robot modle you want to launch")
+    
     model_path = PathJoinSubstitution([pkg_my_package,'urdf', LaunchConfiguration('model')])#path to your robot
     
     world_launch = IncludeLaunchDescription(
@@ -83,6 +84,29 @@ def generate_launch_description():
         package='joint_state_publisher_gui',
         executable='joint_state_publisher_gui',
     )
+
+    gz_image_bridge_node = Node(
+        package = "ros_gz_image",
+        executable="image_bridge",
+        arguments=[
+            "/camera/image",
+        ], 
+        output = "screen", 
+        parameters = [{"use_sim_time":True, "camera.image.compressed.jpeg_quality":75},],
+    )
+    relay_camera_info_node = Node(
+        package = 'topic_tools',
+        executable= 'relay',
+        name = 'relay_camera_info',
+        output = "screen",
+        arguments=['camera/camera_info', 'camera/image/camera_info'], 
+        parameters=[{'use_sim_time':True}]
+    )
+    relay_wide_camera_info_node = Node(
+        package='topic_tools',
+        executable='relay',
+        arguments=['camera/wide_angle_camera_info', 'camera/wide_angle_image/camera_info']
+    )
     ros2_bridge_node = Node(
         package = "ros_gz_bridge",
         executable = "parameter_bridge",
@@ -91,7 +115,10 @@ def generate_launch_description():
             "/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist",
             "/odom@nav_msgs/msg/Odometry@gz.msgs.Odometry",
             "/joint_states@sensor_msgs/msg/JointState@gz.msgs.Model",
-            "/tf@tf2_msgs/msg/TFMessage@gz.msgs.Pose_V"
+            "/tf@tf2_msgs/msg/TFMessage@gz.msgs.Pose_V",
+            #"/camera/image@sensor_msgs/msg/Image@gz.msgs.Image",
+            "/camera/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo",
+            "imu@sensor_msgs/msg/Imu@gz.msgs.IMU",
 
         ], 
         output = "screen", 
@@ -100,11 +127,15 @@ def generate_launch_description():
     return LaunchDescription([
         world_arg,
         model_arg,
+        #use_sim_time_arg,
         rviz_launch_arg,
         robot_state_publisher_node,
         spawn_urdf_node,
         world_launch,
-        rviz_node, ros2_bridge_node]
+        rviz_node, ros2_bridge_node,
+        gz_image_bridge_node, 
+        relay_camera_info_node,
+        relay_wide_camera_info_node]
 
     )
 
