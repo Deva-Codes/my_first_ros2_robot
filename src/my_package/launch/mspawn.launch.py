@@ -120,6 +120,8 @@ def generate_launch_description():
             "/camera/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo",
             "imu@sensor_msgs/msg/Imu@gz.msgs.IMU",
             "/navsat@sensor_msgs/msg/NavSatFix@gz.msgs.NavSat",
+            "/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan",
+            "/scan/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked",
 
         ], 
         output = "screen", 
@@ -142,9 +144,10 @@ def generate_launch_description():
         world_launch,
         rviz_node, ros2_bridge_node,
         gz_image_bridge_node, 
-        relay_camera_info_node,
-        relay_wide_camera_info_node,
-        ekf_node]
+        #relay_camera_info_node,
+        #relay_wide_camera_info_node,
+        #ekf_node
+        ]
 
     )
 
