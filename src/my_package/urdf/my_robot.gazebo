@@ -142,11 +142,7 @@
             <min_angle>-3.14156</min_angle>
             <max_angle>3.14156</max_angle>
           </horizontal>
-                    <vertical>
-              <samples>32</samples>
-              <min_angle>-0.5353</min_angle>
-              <max_angle>0.1862</max_angle>
-          </vertical>
+                    
           <!-- Dirty hack for fake lidar detections with ogre 1 rendering in VM -->
           <!-- <vertical>
               <samples>3</samples>
