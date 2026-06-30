@@ -19,15 +19,15 @@ class ObstacleAvoider(Node):
         ranges = msg.ranges
         
 
-        front_start = self.angle_to_index(math.radians(-20),angle_min,angle_increment )
-        front_end = self.angle_to_index(math.radians(20),angle_min,angle_increment )
+        front_start = self.angle_to_index(math.radians(-25),angle_min,angle_increment )
+        front_end = self.angle_to_index(math.radians(25),angle_min,angle_increment )
 
-        left_start = self.angle_to_index(math.radians(20),angle_min,angle_increment )
+        left_start = self.angle_to_index(math.radians(25),angle_min,angle_increment )
         left_end = self.angle_to_index(math.radians(60),angle_min,angle_increment )
         
 
         right_start = self.angle_to_index(math.radians(-60),angle_min,angle_increment )
-        right_end = self.angle_to_index(math.radians(-20),angle_min,angle_increment )
+        right_end = self.angle_to_index(math.radians(-25),angle_min,angle_increment )
 
         front_indices = range(max(0,front_start),min(len(ranges),front_end))
         left_indices = range(max(0,left_start),min(len(ranges),left_end))
@@ -38,17 +38,17 @@ class ObstacleAvoider(Node):
         right_min = min((ranges[x] for x in right_indices if not math.isinf(ranges[x])),default = 999.0  )
 
         cmd = Twist()
-        safe_distance = 1.5
+        safe_distance = 1.6
         if front_min<safe_distance:
-            cmd.linear.x = 0.2
+            cmd.linear.x = 0.1
             if left_min > right_min:
-                cmd.angular.z = 5.0
+                cmd.angular.z = .7
             else:
-                cmd.angular.z = -5.0
+                cmd.angular.z = -.7
             self.get_logger().info(f"obstacle at {front_min:.2f}m -avoiding (left  {left_min:.2f}),(right  {right_min:.2f})")
 
         else:
-            cmd.linear.x = 1.67
+            cmd.linear.x = 1.0
             cmd.angular.z =0.0
         self.publisher.publish(cmd)
 
