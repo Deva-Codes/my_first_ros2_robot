@@ -28,8 +28,8 @@ class GpsWaypointFollower(Node):
 
     def imu_callback(self,msg):
         q = msg.orientation
-        siny_cosp = 2 * (q.w * q.z + q.x * q.y)
-        cosy_cosp = 1 - 2 * (q.y * q.y + q.z * q.z)
+        siny_cosp = 2.0 * (q.w * q.z + q.x * q.y)
+        cosy_cosp = 1.0 - 2.0 * (q.y * q.y + q.z * q.z)
         self.current_yaw = math.atan2(siny_cosp, cosy_cosp)
     def control_loop(self):
         if self.current_lat == None or self.current_yaw is None:
@@ -42,7 +42,7 @@ class GpsWaypointFollower(Node):
 
         distance = math.sqrt(meters_north**2 + meters_east**2)
 
-        bearing = math.atan2(meters_east,meters_north)
+        bearing = math.atan2(meters_north,meters_east)
 
         heading_error = bearing-self.current_yaw
 
@@ -53,10 +53,20 @@ class GpsWaypointFollower(Node):
             cmd.linear.x = 0.0
             cmd.angular.z =0.0
             self.get_logger().info('waypoint reached')
-        else:
+        elif(distance<5.0):
             cmd.linear.x =0.5
+            
+            cmd.angular.z = 1.5 * heading_error
+            self.get_logger().info(f'dist={distance:.2f}m bearing_err={math.degrees(heading_error):.1f}deg, now at {self.current_lat,self.current_lon}')
+
+        elif(distance<10.0):
+            cmd.linear.x =1.0
+            cmd.angular.z = 1.5 * heading_error
+            self.get_logger().info(f'dist={distance:.2f}m bearing_err={math.degrees(heading_error):.1f}deg, now at {self.current_lat,self.current_lon}')
+        else:
+            cmd.linear.x =3.0
             cmd.angular.z = 1.5 *heading_error
-            self.get_logger().info(f'dist={distance:.2f}m bearing_err={math.degrees(heading_error):.1f}deg')
+            self.get_logger().info(f'dist={distance:.2f}m bearing_err={math.degrees(heading_error):.1f}deg, now at {self.current_lat,self.current_lon}')
         self.publisher.publish(cmd)
 
 def main():

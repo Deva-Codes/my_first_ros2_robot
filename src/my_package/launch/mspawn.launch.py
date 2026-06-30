@@ -24,7 +24,7 @@ def generate_launch_description():
     )
     world_arg = DeclareLaunchArgument(# gives you the choice to launch the world you want during launching
         'world',
-        default_value="world.sdf",
+        default_value="empty.sdf",
         description="the world you want to launch"
     )
     model_arg = DeclareLaunchArgument( # gives the choice to launch the model you want during launching
@@ -118,7 +118,7 @@ def generate_launch_description():
             "/tf@tf2_msgs/msg/TFMessage@gz.msgs.Pose_V",
             #"/camera/image@sensor_msgs/msg/Image@gz.msgs.Image",
             "/camera/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo",
-            "imu@sensor_msgs/msg/Imu@gz.msgs.IMU",
+            "/imu@sensor_msgs/msg/Imu@gz.msgs.IMU",
             "/navsat@sensor_msgs/msg/NavSatFix@gz.msgs.NavSat",
             "/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan",
             "/scan/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked",

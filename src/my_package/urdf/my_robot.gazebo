@@ -14,8 +14,8 @@
             <wheel_radius>.2</wheel_radius>
 
                  <max_velocity>10.0</max_velocity>
-        <max_linear_acceleration>1</max_linear_acceleration>
-        <min_linear_acceleration>-1</min_linear_acceleration>
+        <max_linear_acceleration>2</max_linear_acceleration>
+        <min_linear_acceleration>-2</min_linear_acceleration>
         <max_angular_acceleration>5</max_angular_acceleration>
         <min_angular_acceleration>-5</min_angular_acceleration>
         <max_linear_velocity>5</max_linear_velocity>
@@ -101,7 +101,7 @@
       <always_on>1</always_on>
       <update_rate>1</update_rate>
       <topic>navsat</topic>
-      <navsat>
+      <!-- <navsat>
     <position_sensing>
       <horizontal>
         <noise type="gaussian">
@@ -109,7 +109,7 @@
           <stddev>1.0</stddev> </noise>
       </horizontal>
     </position_sensing>
-  </navsat>
+  </navsat> -->
       <gz_frame_id>navsat_link</gz_frame_id>
     </sensor>
   </gazebo>
@@ -122,8 +122,8 @@
     <spherical_coordinates>
       <surface_model>EARTH_WGS84</surface_model>
       <world_frame_orientation>ENU</world_frame_orientation>
-      <latitude_deg>47.478950</latitude_deg>
-      <longitude_deg>19.057785</longitude_deg>
+      <latitude_deg>0.000000</latitude_deg>
+      <longitude_deg>0.000000</longitude_deg>
       <elevation>0</elevation>
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
