@@ -56,16 +56,16 @@ class GpsWaypointFollower(Node):
         elif(distance<5.0):
             cmd.linear.x =0.5
             
-            cmd.angular.z = 1.5 * heading_error
+            cmd.angular.z = 1.0 * heading_error
             self.get_logger().info(f'dist={distance:.2f}m bearing_err={math.degrees(heading_error):.1f}deg, now at {self.current_lat,self.current_lon}')
 
         elif(distance<10.0):
             cmd.linear.x =1.0
-            cmd.angular.z = 1.5 * heading_error
+            cmd.angular.z = 1.0 * heading_error
             self.get_logger().info(f'dist={distance:.2f}m bearing_err={math.degrees(heading_error):.1f}deg, now at {self.current_lat,self.current_lon}')
         else:
             cmd.linear.x =3.0
-            cmd.angular.z = 1.5 *heading_error
+            cmd.angular.z = 1.0 *heading_error
             self.get_logger().info(f'dist={distance:.2f}m bearing_err={math.degrees(heading_error):.1f}deg, now at {self.current_lat,self.current_lon}')
         self.publisher.publish(cmd)
 
