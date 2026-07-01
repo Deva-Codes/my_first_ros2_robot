@@ -1,0 +1,294 @@
+<sdf version='1.10'>
+  <world name='lane_world'>
+    <physics name='1ms' type='ignored'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <plugin name='gz::sim::systems::Physics' filename='gz-sim-physics-system'/>
+    <plugin name='gz::sim::systems::UserCommands' filename='gz-sim-user-commands-system'/>
+    <plugin name='gz::sim::systems::SceneBroadcaster' filename='gz-sim-scene-broadcaster-system'/>
+    <plugin name='gz::sim::systems::Contact' filename='gz-sim-contact-system'/>
+    <plugin name='gz::sim::systems::Sensors' filename='gz-sim-sensors-system'>
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
+    <!-- GPS world origin — matches your robot's navsat config -->
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <world_frame_orientation>ENU</world_frame_orientation>
+      <latitude_deg>47.478950</latitude_deg>
+      <longitude_deg>19.057785</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+
+    <gravity>0 0 -9.8000000000000007</gravity>
+    <magnetic_field>5.5644999999999998e-06 2.2875799999999999e-05 -4.2388400000000002e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+
+    <scene>
+      <ambient>0.400000006 0.400000006 0.400000006 1</ambient>
+      <background>0.699999988 0.699999988 0.699999988 1</background>
+      <shadows>true</shadows>
+    </scene>
+
+    <!-- Dark asphalt ground plane — dark color gives good contrast for white lane lines -->
+    <model name='ground_plane'>
+      <static>true</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction><ode/></friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <!-- Dark grey asphalt color -->
+          <material>
+            <ambient>0.15 0.15 0.15 1</ambient>
+            <diffuse>0.15 0.15 0.15 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx><ixy>0</ixy><ixz>0</ixz>
+            <iyy>1</iyy><iyz>0</iyz><izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>0 0 0 0 0 0</pose>
+      <self_collide>false</self_collide>
+    </model>
+
+    <light name='sun' type='directional'>
+      <pose>0 0 10 0 0 0</pose>
+      <cast_shadows>true</cast_shadows>
+      <intensity>1</intensity>
+      <direction>-0.5 0.10000000000000001 -0.90000000000000002</direction>
+      <diffuse>0.800000012 0.800000012 0.800000012 1</diffuse>
+      <specular>0.200000003 0.200000003 0.200000003 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <linear>0.01</linear>
+        <constant>0.90000000000000002</constant>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+
+    <!-- ==================== LANE MARKINGS ==================== -->
+    <!--
+      Robot spawns at (0,0). Lane runs along the +X axis (forward).
+      Lane is 3m wide total: left line at y=+1.5, right line at y=-1.5.
+      Lines are 20m long, 0.08m wide, 0.002m tall (flat painted-line look).
+      Centered at x=10 so lines run from x=0 to x=20 (in front of robot).
+    -->
+
+    <!-- Left boundary line (white, solid) -->
+    <model name='left_lane_line'>
+      <static>true</static>
+      <pose>10 1.5 0.001 0 0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <box><size>20 0.08 0.002</size></box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.5 0.5 0.5 1</specular>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box><size>20 0.08 0.002</size></box>
+          </geometry>
+        </collision>
+        <inertial>
+          <mass>1</mass>
+          <inertia><ixx>1</ixx><ixy>0</ixy><ixz>0</ixz><iyy>1</iyy><iyz>0</iyz><izz>1</izz></inertia>
+        </inertial>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+
+    <!-- Right boundary line (white, solid) -->
+    <model name='right_lane_line'>
+      <static>true</static>
+      <pose>10 -1.5 0.001 0 0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <box><size>20 0.08 0.002</size></box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.5 0.5 0.5 1</specular>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box><size>20 0.08 0.002</size></box>
+          </geometry>
+        </collision>
+        <inertial>
+          <mass>1</mass>
+          <inertia><ixx>1</ixx><ixy>0</ixy><ixz>0</ixz><iyy>1</iyy><iyz>0</iyz><izz>1</izz></inertia>
+        </inertial>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+
+    <!-- Center dashed line (yellow) — 5 dashes, 1.5m each, 1.5m gaps -->
+    <!-- Dash 1 -->
+    <model name='center_dash_1'>
+      <static>true</static>
+      <pose>1.5 0 0.001 0 0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><box><size>1.5 0.05 0.002</size></box></geometry>
+          <material>
+            <ambient>1 1 0 1</ambient>
+            <diffuse>1 1 0 1</diffuse>
+            <specular>0.3 0.3 0 1</specular>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry><box><size>1.5 0.05 0.002</size></box></geometry>
+        </collision>
+        <inertial><mass>1</mass><inertia><ixx>1</ixx><ixy>0</ixy><ixz>0</ixz><iyy>1</iyy><iyz>0</iyz><izz>1</izz></inertia></inertial>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+
+    <!-- Dash 2 -->
+    <model name='center_dash_2'>
+      <static>true</static>
+      <pose>4.5 0 0.001 0 0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><box><size>1.5 0.05 0.002</size></box></geometry>
+          <material>
+            <ambient>1 1 0 1</ambient>
+            <diffuse>1 1 0 1</diffuse>
+            <specular>0.3 0.3 0 1</specular>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry><box><size>1.5 0.05 0.002</size></box></geometry>
+        </collision>
+        <inertial><mass>1</mass><inertia><ixx>1</ixx><ixy>0</ixy><ixz>0</ixz><iyy>1</iyy><iyz>0</iyz><izz>1</izz></inertia></inertial>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+
+    <!-- Dash 3 -->
+    <model name='center_dash_3'>
+      <static>true</static>
+      <pose>7.5 0 0.001 0 0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><box><size>1.5 0.05 0.002</size></box></geometry>
+          <material>
+            <ambient>1 1 0 1</ambient>
+            <diffuse>1 1 0 1</diffuse>
+            <specular>0.3 0.3 0 1</specular>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry><box><size>1.5 0.05 0.002</size></box></geometry>
+        </collision>
+        <inertial><mass>1</mass><inertia><ixx>1</ixx><ixy>0</ixy><ixz>0</ixz><iyy>1</iyy><iyz>0</iyz><izz>1</izz></inertia></inertial>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+
+    <!-- Dash 4 -->
+    <model name='center_dash_4'>
+      <static>true</static>
+      <pose>10.5 0 0.001 0 0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><box><size>1.5 0.05 0.002</size></box></geometry>
+          <material>
+            <ambient>1 1 0 1</ambient>
+            <diffuse>1 1 0 1</diffuse>
+            <specular>0.3 0.3 0 1</specular>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry><box><size>1.5 0.05 0.002</size></box></geometry>
+        </collision>
+        <inertial><mass>1</mass><inertia><ixx>1</ixx><ixy>0</ixy><ixz>0</ixz><iyy>1</iyy><iyz>0</iyz><izz>1</izz></inertia></inertial>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+
+    <!-- Dash 5 -->
+    <model name='center_dash_5'>
+      <static>true</static>
+      <pose>13.5 0 0.001 0 0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><box><size>1.5 0.05 0.002</size></box></geometry>
+          <material>
+            <ambient>1 1 0 1</ambient>
+            <diffuse>1 1 0 1</diffuse>
+            <specular>0.3 0.3 0 1</specular>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry><box><size>1.5 0.05 0.002</size></box></geometry>
+        </collision>
+        <inertial><mass>1</mass><inertia><ixx>1</ixx><ixy>0</ixy><ixz>0</ixz><iyy>1</iyy><iyz>0</iyz><izz>1</izz></inertia></inertial>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+
+    <!-- Dash 6 -->
+    <model name='center_dash_6'>
+      <static>true</static>
+      <pose>16.5 0 0.001 0 0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><box><size>1.5 0.05 0.002</size></box></geometry>
+          <material>
+            <ambient>1 1 0 1</ambient>
+            <diffuse>1 1 0 1</diffuse>
+            <specular>0.3 0.3 0 1</specular>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry><box><size>1.5 0.05 0.002</size></box></geometry>
+        </collision>
+        <inertial><mass>1</mass><inertia><ixx>1</ixx><ixy>0</ixy><ixz>0</ixz><iyy>1</iyy><iyz>0</iyz><izz>1</izz></inertia></inertial>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+
+  </world>
+</sdf>

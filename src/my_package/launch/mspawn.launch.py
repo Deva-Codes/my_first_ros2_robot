@@ -24,7 +24,7 @@ def generate_launch_description():
     )
     world_arg = DeclareLaunchArgument(# gives you the choice to launch the world you want during launching
         'world',
-        default_value="empty.sdf",
+        default_value="race_track.sdf",
         description="the world you want to launch"
     )
     model_arg = DeclareLaunchArgument( # gives the choice to launch the model you want during launching
@@ -56,7 +56,7 @@ def generate_launch_description():
         arguments = [
             '-name', 'my_robot',
             '-topic' , 'robot_description',
-             "-x", "0.0", "-y", "0.0", "-z", "0.5", "-Y", "0.0" 
+             "-x", "25.0", "-y", "0.0", "-z", "0.5", "-Y", "1.57" 
             
         ], 
         output = "screen", 

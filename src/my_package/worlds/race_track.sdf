@@ -1,0 +1,2433 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <world name="curved_race_track">
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <model name="race_track">
+      <static>true</static>
+      
+      <!-- Grass Background -->
+      <link name="grass_plane">
+        <pose>0 0 0 0 0 0</pose>
+        <visual name="visual">
+          <geometry><plane><normal>0 0 1</normal><size>150 150</size></plane></geometry>
+          <material>
+            <ambient>0.1 0.4 0.1 1.0</ambient>
+            <diffuse>0.1 0.4 0.1 1.0</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <link name="asphalt_0">
+        <pose>25.0 0.0 0.05 0 0 1.5707963267948966</pose>
+        <visual name="v"><geometry><box><size>1.1517413086948718 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1517413086948718 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_0">
+        <pose>23.5 9.184850993605148e-17 0.101 0 0 1.5707963267948966</pose>
+        <visual name="v"><geometry><box><size>1.1517413086948718 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_0">
+        <pose>26.5 -9.184850993605148e-17 0.101 0 0 1.5707963267948966</pose>
+        <visual name="v"><geometry><box><size>1.1517413086948718 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_1">
+        <pose>24.93867884277719 1.0452403330434594 0.05 0 0 1.6878610084876453</pose>
+        <visual name="v"><geometry><box><size>1.1545797828012336 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1545797828012336 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_1">
+        <pose>23.448945215197284 0.8700441034675652 0.101 0 0 1.6878610084876453</pose>
+        <visual name="v"><geometry><box><size>1.1545797828012336 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_1">
+        <pose>26.428412470357095 1.2204365626193536 0.101 0 0 1.6878610084876453</pose>
+        <visual name="v"><geometry><box><size>1.1545797828012336 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_2">
+        <pose>24.755788203260053 2.0788016167025125 0.05 0 0 1.8036160374220453</pose>
+        <visual name="v"><geometry><box><size>1.1599233334616188 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1599233334616188 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_2">
+        <pose>23.29625866148592 1.7327185100813123 0.101 0 0 1.8036160374220453</pose>
+        <visual name="v"><geometry><box><size>1.1599233334616188 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_2">
+        <pose>26.215317745034188 2.4248847233237125 0.101 0 0 1.8036160374220453</pose>
+        <visual name="v"><geometry><box><size>1.1599233334616188 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_3">
+        <pose>24.454518629220797 3.0893241386282364 0.05 0 0 1.9168424924672245</pose>
+        <visual name="v"><geometry><box><size>1.1671380173277104 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1671380173277104 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_3">
+        <pose>23.043436937324422 2.580552619383238 0.101 0 0 1.9168424924672245</pose>
+        <visual name="v"><geometry><box><size>1.1671380173277104 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_3">
+        <pose>25.86560032111717 3.598095657873235 0.101 0 0 1.9168424924672245</pose>
+        <visual name="v"><geometry><box><size>1.1671380173277104 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_4">
+        <pose>24.0400953103184 4.066077768171364 0.05 0 0 2.0264843342093304</pose>
+        <visual name="v"><geometry><box><size>1.1753487668691223 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1753487668691223 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_4">
+        <pose>22.693157616906884 3.4059574381804865 0.101 0 0 2.0264843342093304</pose>
+        <visual name="v"><geometry><box><size>1.1753487668691223 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_4">
+        <pose>25.387033003729915 4.726198098162241 0.101 0 0 2.0264843342093304</pose>
+        <visual name="v"><geometry><box><size>1.1753487668691223 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_5">
+        <pose>23.51964217467976 4.999254272359171 0.05 0 0 2.1316897090092386</pose>
+        <visual name="v"><geometry><box><size>1.1835150671737338 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1835150671737338 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_5">
+        <pose>22.249471843683427 4.201339909625511 0.101 0 0 2.1316897090092386</pose>
+        <visual name="v"><geometry><box><size>1.1835150671737338 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_5">
+        <pose>24.789812505676093 5.797168635092832 0.101 0 0 2.1316897090092386</pose>
+        <visual name="v"><geometry><box><size>1.1835150671737338 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_6">
+        <pose>22.901996910129775 5.880233371797846 0.05 0 0 2.2318184825836376</pose>
+        <visual name="v"><geometry><box><size>1.190511819055715 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.190511819055715 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_6">
+        <pose>21.717949233168476 4.959347331789338 0.101 0 0 2.2318184825836376</pose>
+        <visual name="v"><geometry><box><size>1.190511819055715 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_6">
+        <pose>24.086044587091074 6.801119411806354 0.101 0 0 2.2318184825836376</pose>
+        <visual name="v"><geometry><box><size>1.190511819055715 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_7">
+        <pose>22.19748201854685 6.701814944752323 0.05 0 0 2.326421200263377</pose>
+        <visual name="v"><geometry><box><size>1.1952063372059136 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1952063372059136 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_7">
+        <pose>21.105717245066373 5.673199526149663 0.101 0 0 2.326421200263377</pose>
+        <visual name="v"><geometry><box><size>1.1952063372059136 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_7">
+        <pose>23.289246792027328 7.730430363354984 0.101 0 0 2.326421200263377</pose>
+        <visual name="v"><geometry><box><size>1.1952063372059136 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_8">
+        <pose>21.417638223340855 7.458410741258788 0.05 0 0 2.415198938088985</pose>
+        <visual name="v"><geometry><box><size>1.1965258177165006 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1965258177165006 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_8">
+        <pose>20.421371233059197 6.337049031516955 0.101 0 0 2.415198938088985</pose>
+        <visual name="v"><geometry><box><size>1.1965258177165006 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_8">
+        <pose>22.413905213622513 8.579772451000622 0.101 0 0 2.415198938088985</pose>
+        <visual name="v"><geometry><box><size>1.1965258177165006 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_9">
+        <pose>20.57492758514184 8.146190109942514 0.05 0 0 2.4979537496442656</pose>
+        <visual name="v"><geometry><box><size>1.1935129791848818 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1935129791848818 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_9">
+        <pose>19.674762239504048 6.946314136971644 0.101 0 0 2.4979537496442656</pose>
+        <visual name="v"><geometry><box><size>1.1935129791848818 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_9">
+        <pose>21.47509293077963 9.346066082913385 0.101 0 0 2.4979537496442656</pose>
+        <visual name="v"><geometry><box><size>1.1935129791848818 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_10">
+        <pose>19.682414510580028 8.7631755362432 0.05 0 0 2.574537075790494</pose>
+        <visual name="v"><geometry><box><size>1.1853701260313456 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1853701260313456 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_10">
+        <pose>18.876688308791273 7.49794619428536 0.101 0 0 2.574537075790494</pose>
+        <visual name="v"><geometry><box><size>1.1853701260313456 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_10">
+        <pose>20.488140712368782 10.028404878201039 0.101 0 0 2.574537075790494</pose>
+        <visual name="v"><geometry><box><size>1.1853701260313456 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_11">
+        <pose>18.75343344040603 9.309285205632204 0.05 0 0 2.6448003074046262</pose>
+        <visual name="v"><geometry><box><size>1.1714934133066277 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1714934133066277 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_11">
+        <pose>18.038521296456896 7.990611392123324 0.101 0 0 2.6448003074046262</pose>
+        <visual name="v"><geometry><box><size>1.1714934133066277 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_11">
+        <pose>19.468345584355166 10.627959019141084 0.101 0 0 2.6448003074046262</pose>
+        <visual name="v"><geometry><box><size>1.1714934133066277 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_12">
+        <pose>17.801252359412082 9.786321299444317 0.05 0 0 2.708548881947828</pose>
+        <visual name="v"><geometry><box><size>1.1514998059889057 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1514998059889057 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_12">
+        <pose>17.171799032504463 8.42478227714458 0.101 0 0 2.708548881947828</pose>
+        <visual name="v"><geometry><box><size>1.1514998059889057 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_12">
+        <pose>18.4307056863197 11.147860321744055 0.101 0 0 2.708548881947828</pose>
+        <visual name="v"><geometry><box><size>1.1514998059889057 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_13">
+        <pose>16.838741371798708 10.197904262218827 0.05 0 0 2.7654993891998405</pose>
+        <visual name="v"><geometry><box><size>1.1252494421990376 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1252494421990376 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_13">
+        <pose>16.287806970536273 8.802744312426116 0.101 0 0 2.7654993891998405</pose>
+        <visual name="v"><geometry><box><size>1.1252494421990376 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_13">
+        <pose>17.389675773061143 11.593064212011539 0.101 0 0 2.7654993891998405</pose>
+        <visual name="v"><geometry><box><size>1.1252494421990376 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_14">
+        <pose>15.878055429048832 10.54935480497764 0.05 0 0 2.8152382774725226</pose>
+        <visual name="v"><geometry><box><size>1.092866102675976 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.092866102675976 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_14">
+        <pose>15.39716747687417 9.12852871517873 0.101 0 0 2.8152382774725226</pose>
+        <visual name="v"><geometry><box><size>1.092866102675976 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_14">
+        <pose>16.358943381223494 11.970180894776549 0.101 0 0 2.8152382774725226</pose>
+        <visual name="v"><geometry><box><size>1.092866102675976 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_15">
+        <pose>14.930339887498949 10.847526885842763 0.05 0 0 2.8571809337977716</pose>
+        <visual name="v"><geometry><box><size>1.0547584072677971 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.0547584072677971 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_15">
+        <pose>14.509450608417962 9.407786556910255 0.101 0 0 2.8571809337977716</pose>
+        <visual name="v"><geometry><box><size>1.0547584072677971 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_15">
+        <pose>15.351229166579936 12.287267214775271 0.101 0 0 2.8571809337977716</pose>
+        <visual name="v"><geometry><box><size>1.0547584072677971 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_16">
+        <pose>14.005466921194902 11.100596296345627 0.05 0 0 2.8905314485385714</pose>
+        <visual name="v"><geometry><box><size>1.0116441791363924 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.0116441791363924 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_16">
+        <pose>13.632818869430034 9.647622301562565 0.101 0 0 2.8905314485385714</pose>
+        <visual name="v"><geometry><box><size>1.0116441791363924 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_16">
+        <pose>14.37811497295977 12.553570291128688 0.101 0 0 2.8905314485385714</pose>
+        <visual name="v"><geometry><box><size>1.0116441791363924 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_17">
+        <pose>13.111809940610991 11.317810739755817 0.05 0 0 2.9142471013519193</pose>
+        <visual name="v"><geometry><box><size>0.964579854375915 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.964579854375915 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_17">
+        <pose>12.773721675392794 9.856408562077903 0.101 0 0 2.9142471013519193</pose>
+        <visual name="v"><geometry><box><size>0.964579854375915 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_17">
+        <pose>13.449898205829188 12.779212917433732 0.101 0 0 2.9142471013519193</pose>
+        <visual name="v"><geometry><box><size>0.964579854375915 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_18">
+        <pose>12.25606209396532 11.509208381413854 0.05 0 0 2.9270192034203104</pose>
+        <visual name="v"><geometry><box><size>0.9149951303041115 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.9149951303041115 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_18">
+        <pose>11.936666074281328 10.043607418460423 0.101 0 0 2.9270192034203104</pose>
+        <visual name="v"><geometry><box><size>0.9149951303041115 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_18">
+        <pose>12.575458113649313 12.974809344367285 0.101 0 0 2.9270192034203104</pose>
+        <visual name="v"><geometry><box><size>0.9149951303041115 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_19">
+        <pose>11.44310368531177 11.685312749645956 0.05 0 0 2.9272959887765153</pose>
+        <visual name="v"><geometry><box><size>0.8647287213029914 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.8647287213029914 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_19">
+        <pose>11.12411333474167 10.219623438692517 0.101 0 0 2.9272959887765153</pose>
+        <visual name="v"><geometry><box><size>0.8647287213029914 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_19">
+        <pose>11.762094035881871 13.151002060599394 0.101 0 0 2.9272959887765153</pose>
+        <visual name="v"><geometry><box><size>0.8647287213029914 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_20">
+        <pose>10.675921967173517 11.856812544082802 0.05 0 0 2.9133960009583806</pose>
+        <visual name="v"><geometry><box><size>0.8160515710137843 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.8160515710137843 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_20">
+        <pose>10.336590024587752 10.395698642725016 0.101 0 0 2.9133960009583806</pose>
+        <visual name="v"><geometry><box><size>0.8160515710137843 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_20">
+        <pose>11.015253909759283 13.317926445440587 0.101 0 0 2.9133960009583806</pose>
+        <visual name="v"><geometry><box><size>0.8160515710137843 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_21">
+        <pose>9.955585293788852 12.034235346982369 0.05 0 0 2.88378823026031</pose>
+        <visual name="v"><geometry><box><size>0.7716463724455257 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.7716463724455257 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_21">
+        <pose>9.573148067782697 10.583807214269576 0.101 0 0 2.88378823026031</pose>
+        <visual name="v"><geometry><box><size>0.7716463724455257 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_21">
+        <pose>10.338022519795008 13.484663479695161 0.101 0 0 2.88378823026031</pose>
+        <visual name="v"><geometry><box><size>0.7716463724455257 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_22">
+        <pose>9.281272095308069 12.227624420056955 0.05 0 0 2.837624258825484</pose>
+        <visual name="v"><geometry><box><size>0.7344883325544713 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.7344883325544713 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_22">
+        <pose>8.832308562178943 10.796390076589677 0.101 0 0 2.837624258825484</pose>
+        <visual name="v"><geometry><box><size>0.7344883325544713 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_22">
+        <pose>9.730235628437194 13.658858763524233 0.101 0 0 2.837624258825484</pose>
+        <visual name="v"><geometry><box><size>0.7344883325544713 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_23">
+        <pose>8.650353596254707 12.446227698969087 0.05 0 0 2.7755346064100994</pose>
+        <visual name="v"><geometry><box><size>0.7075590026083342 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.7075590026083342 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_23">
+        <pose>8.113447433993308 11.045609345196105 0.101 0 0 2.7755346064100994</pose>
+        <visual name="v"><geometry><box><size>0.7075590026083342 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_23">
+        <pose>9.187259758516106 13.84684605274207 0.101 0 0 2.7755346064100994</pose>
+        <visual name="v"><geometry><box><size>0.7075590026083342 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_24">
+        <pose>8.058527696295526 12.69820777193578 0.05 0 0 2.7004655658699304</pose>
+        <visual name="v"><geometry><box><size>0.6933651874997658 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.6933651874997658 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_24">
+        <pose>7.418089303098337 11.341801245661667 0.101 0 0 2.7004655658699304</pose>
+        <visual name="v"><geometry><box><size>0.6933651874997658 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_24">
+        <pose>8.698966089492716 14.054614298209891 0.101 0 0 2.7004655658699304</pose>
+        <visual name="v"><geometry><box><size>0.6933651874997658 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_25">
+        <pose>7.500000000000002 12.990381056766578 0.05 0 0 2.6179938779914944</pose>
+        <visual name="v"><geometry><box><size>0.6933651874997708 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.6933651874997708 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_25">
+        <pose>6.750000000000002 11.69134295108992 0.101 0 0 2.6179938779914944</pose>
+        <visual name="v"><geometry><box><size>0.6933651874997708 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_25">
+        <pose>8.250000000000002 14.289419162443236 0.101 0 0 2.6179938779914944</pose>
+        <visual name="v"><geometry><box><size>0.6933651874997708 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_26">
+        <pose>6.967706664881618 13.327993588060306 0.05 0 0 2.535522190113058</pose>
+        <visual name="v"><geometry><box><size>0.7075590026083323 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.7075590026083323 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_26">
+        <pose>6.113243351867827 12.095154406855597 0.101 0 0 2.535522190113058</pose>
+        <visual name="v"><geometry><box><size>0.7075590026083323 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_26">
+        <pose>7.822169977895409 14.560832769265014 0.101 0 0 2.535522190113058</pose>
+        <visual name="v"><geometry><box><size>0.7075590026083323 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_27">
+        <pose>6.453572570465417 13.714539815559197 0.05 0 0 2.4604531495728894</pose>
+        <visual name="v"><geometry><box><size>0.7344883325544705 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.7344883325544705 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_27">
+        <pose>5.509054576221975 12.549256262705924 0.101 0 0 2.4604531495728894</pose>
+        <visual name="v"><geometry><box><size>0.7344883325544705 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_27">
+        <pose>7.39809056470886 14.87982336841247 0.101 0 0 2.4604531495728894</pose>
+        <visual name="v"><geometry><box><size>0.7344883325544705 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_28">
+        <pose>5.9487973280502535 14.151629624000888 0.05 0 0 2.3983634971575043</pose>
+        <visual name="v"><geometry><box><size>0.7716463724455292 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.7716463724455292 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_28">
+        <pose>4.93379379440341 13.04719862720461 0.101 0 0 2.3983634971575043</pose>
+        <visual name="v"><geometry><box><size>0.7716463724455292 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_28">
+        <pose>6.963800861697097 15.256060620797166 0.101 0 0 2.3983634971575043</pose>
+        <visual name="v"><geometry><box><size>0.7716463724455292 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_29">
+        <pose>5.444160878712943 14.638907447455095 0.05 0 0 2.352199525722679</pose>
+        <visual name="v"><geometry><box><size>0.8160515710137811 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.8160515710137811 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_29">
+        <pose>4.379271882423116 13.582493028024517 0.101 0 0 2.352199525722679</pose>
+        <visual name="v"><geometry><box><size>0.8160515710137811 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_29">
+        <pose>6.509049875002771 15.695321866885672 0.101 0 0 2.352199525722679</pose>
+        <visual name="v"><geometry><box><size>0.8160515710137811 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_30">
+        <pose>4.930339887498949 15.174025904434004 0.05 0 0 2.322591755024608</pose>
+        <visual name="v"><geometry><box><size>0.8647287213029927 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.8647287213029927 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_30">
+        <pose>3.8346441023933986 14.149598871160315 0.101 0 0 2.322591755024608</pose>
+        <visual name="v"><geometry><box><size>0.8647287213029927 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_30">
+        <pose>6.0260356726044995 16.198452937707692 0.101 0 0 2.322591755024608</pose>
+        <visual name="v"><geometry><box><size>0.8647287213029927 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_31">
+        <pose>4.398225849703701 15.7526748644423 0.05 0 0 2.3086917672064735</pose>
+        <visual name="v"><geometry><box><size>0.9149951303041136 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.9149951303041136 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_31">
+        <pose>3.288396847647765 14.74357646180977 0.101 0 0 2.3086917672064735</pose>
+        <visual name="v"><geometry><box><size>0.9149951303041136 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_31">
+        <pose>5.5080548517596375 16.76177326707483 0.101 0 0 2.3086917672064735</pose>
+        <visual name="v"><geometry><box><size>0.9149951303041136 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_32">
+        <pose>3.839235788770519 16.3686653144404 0.05 0 0 2.3089685525626784</pose>
+        <visual name="v"><geometry><box><size>0.964579854375909 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.964579854375909 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_32">
+        <pose>2.7296861328839084 15.359259766049712 0.101 0 0 2.3089685525626784</pose>
+        <visual name="v"><geometry><box><size>0.964579854375909 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_32">
+        <pose>4.94878544465713 17.378070862831088 0.101 0 0 2.3089685525626784</pose>
+        <visual name="v"><geometry><box><size>0.964579854375909 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_33">
+        <pose>3.2456066455473946 17.014065868040355 0.05 0 0 2.3217406546310695</pose>
+        <visual name="v"><geometry><box><size>1.0116441791363973 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.0116441791363973 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_33">
+        <pose>2.1490393671415196 15.990571752801028 0.101 0 0 2.3217406546310695</pose>
+        <visual name="v"><geometry><box><size>1.0116441791363973 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_33">
+        <pose>4.34217392395327 18.03755998327968 0.101 0 0 2.3217406546310695</pose>
+        <visual name="v"><geometry><box><size>1.0116441791363973 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_34">
+        <pose>2.610664929193313 17.679388293790225 0.05 0 0 2.3454563074444175</pose>
+        <visual name="v"><geometry><box><size>1.054758407267797 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.054758407267797 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_34">
+        <pose>1.5386765645554572 16.63017861689954 0.101 0 0 2.3454563074444175</pose>
+        <visual name="v"><geometry><box><size>1.054758407267797 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_34">
+        <pose>3.6826532938311685 18.728597970680912 0.101 0 0 2.3454563074444175</pose>
+        <visual name="v"><geometry><box><size>1.054758407267797 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_35">
+        <pose>1.9290639076250573 18.353817072631568 0.05 0 0 2.3788068221852168</pose>
+        <visual name="v"><geometry><box><size>1.0928661026759723 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.0928661026759723 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_35">
+        <pose>0.8926568474570342 17.269446100300662 0.101 0 0 2.3788068221852168</pose>
+        <visual name="v"><geometry><box><size>1.0928661026759723 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_35">
+        <pose>2.96547096779308 19.438188044962473 0.101 0 0 2.3788068221852168</pose>
+        <visual name="v"><geometry><box><size>1.0928661026759723 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_36">
+        <pose>1.1969815401216533 19.02547676674253 0.05 0 0 2.420749478510466</pose>
+        <visual name="v"><geometry><box><size>1.1252494421990396 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1252494421990396 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_36">
+        <pose>0.20695402808341812 17.89860253888594 0.101 0 0 2.420749478510466</pose>
+        <visual name="v"><geometry><box><size>1.1252494421990396 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_36">
+        <pose>2.1870090521598886 20.152350994599118 0.101 0 0 2.420749478510466</pose>
+        <visual name="v"><geometry><box><size>1.1252494421990396 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_37">
+        <pose>0.412273470543756 19.681729926843122 0.05 0 0 2.470488366783148</pose>
+        <visual name="v"><geometry><box><size>1.151499805988907 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.151499805988907 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_37">
+        <pose>-0.5205032876881366 18.507026764634727 0.101 0 0 2.470488366783148</pose>
+        <visual name="v"><geometry><box><size>1.151499805988907 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_37">
+        <pose>1.3450502287756487 20.856433089051517 0.101 0 0 2.470488366783148</pose>
+        <visual name="v"><geometry><box><size>1.151499805988907 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_38">
+        <pose>-0.4254233247905235 20.309497412150698 0.05 0 0 2.5274388740351608</pose>
+        <visual name="v"><geometry><box><size>1.1714934133066275 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1714934133066275 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_38">
+        <pose>-1.2898240428921142 19.083605329402197 0.101 0 0 2.5274388740351608</pose>
+        <visual name="v"><geometry><box><size>1.1714934133066275 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_38">
+        <pose>0.43897739331106717 21.5353894948992 0.101 0 0 2.5274388740351608</pose>
+        <visual name="v"><geometry><box><size>1.1714934133066275 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_39">
+        <pose>-1.314639241050885 20.89559237038833 0.05 0 0 2.5911874485783626</pose>
+        <visual name="v"><geometry><box><size>1.185370126031344 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.185370126031344 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_39">
+        <pose>-2.09918819088031 19.61712338549994 0.101 0 0 2.5911874485783626</pose>
+        <visual name="v"><geometry><box><size>1.185370126031344 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_39">
+        <pose>-0.5300902912214599 22.174061355276717 0.101 0 0 2.5911874485783626</pose>
+        <visual name="v"><geometry><box><size>1.185370126031344 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_40">
+        <pose>-2.252074623081078 21.427058742099366 0.05 0 0 2.661450680192494</pose>
+        <visual name="v"><geometry><box><size>1.1935129791848818 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1935129791848818 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_40">
+        <pose>-2.9449322739356587 20.096664711876638 0.101 0 0 2.661450680192494</pose>
+        <visual name="v"><geometry><box><size>1.1935129791848818 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_40">
+        <pose>-1.5592169722264977 22.757452772322093 0.101 0 0 2.661450680192494</pose>
+        <visual name="v"><geometry><box><size>1.1935129791848818 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_41">
+        <pose>-3.23265621330315 21.891505024729305 0.05 0 0 2.7380340063387227</pose>
+        <visual name="v"><geometry><box><size>1.1965258177165115 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1965258177165115 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_41">
+        <pose>-3.8216966144675992 20.512000981315143 0.101 0 0 2.7380340063387227</pose>
+        <visual name="v"><geometry><box><size>1.1965258177165115 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_41">
+        <pose>-2.6436158121387003 23.271009068143467 0.101 0 0 2.7380340063387227</pose>
+        <visual name="v"><geometry><box><size>1.1965258177165115 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_42">
+        <pose>-4.2496459378815965 22.27742416110719 0.05 0 0 2.8207888178940044</pose>
+        <visual name="v"><geometry><box><size>1.1952063372059092 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1952063372059092 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_42">
+        <pose>-4.722640170208347 20.853950783700494 0.101 0 0 2.8207888178940044</pose>
+        <visual name="v"><geometry><box><size>1.1952063372059092 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_42">
+        <pose>-3.7766517055548454 23.70089753851389 0.101 0 0 2.8207888178940044</pose>
+        <visual name="v"><geometry><box><size>1.1952063372059092 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_43">
+        <pose>-5.294799015655711 22.574490800486018 0.05 0 0 2.909566555719612</pose>
+        <visual name="v"><geometry><box><size>1.1905118190557087 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1905118190557087 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_43">
+        <pose>-5.639723712149741 21.11468706239363 0.101 0 0 2.909566555719612</pose>
+        <visual name="v"><geometry><box><size>1.1905118190557087 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_43">
+        <pose>-4.9498743191616805 24.034294538578404 0.101 0 0 2.909566555719612</pose>
+        <visual name="v"><geometry><box><size>1.1905118190557087 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_44">
+        <pose>-6.358566974906923 22.773827807464027 0.05 0 0 3.004169273399351</pose>
+        <visual name="v"><geometry><box><size>1.1835150671737356 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1835150671737356 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_44">
+        <pose>-6.564053841064094 21.28796941991934 0.101 0 0 3.004169273399351</pose>
+        <visual name="v"><geometry><box><size>1.1835150671737356 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_44">
+        <pose>-6.1530801087497515 24.259686195008715 0.101 0 0 3.004169273399351</pose>
+        <visual name="v"><geometry><box><size>1.1835150671737356 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_45">
+        <pose>-7.430339887498946 22.86823474737214 0.05 0 0 3.10429804697375</pose>
+        <visual name="v"><geometry><box><size>1.1753487668691187 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1753487668691187 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_45">
+        <pose>-7.486268830172601 21.369277792229195 0.101 0 0 3.10429804697375</pose>
+        <visual name="v"><geometry><box><size>1.1753487668691187 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_45">
+        <pose>-7.374410944825292 24.367191702515083 0.101 0 0 3.10429804697375</pose>
+        <visual name="v"><geometry><box><size>1.1753487668691187 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_46">
+        <pose>-8.49872101415966 22.852372132220562 0.05 0 0 -3.0736818854059287</pose>
+        <visual name="v"><geometry><box><size>1.167138017327716 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.167138017327716 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_46">
+        <pose>-8.396933142780568 21.355829707415936 0.101 0 0 -3.0736818854059287</pose>
+        <visual name="v"><geometry><box><size>1.167138017327716 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_46">
+        <pose>-8.600508885538751 24.34891455702519 0.101 0 0 -3.0736818854059287</pose>
+        <visual name="v"><geometry><box><size>1.167138017327716 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_47">
+        <pose>-9.551826130033866 22.722896439539134 0.05 0 0 -2.964040043663822</pose>
+        <visual name="v"><geometry><box><size>1.1599233334616201 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1599233334616201 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_47">
+        <pose>-9.28689434447385 21.246478087919247 0.101 0 0 -2.964040043663822</pose>
+        <visual name="v"><geometry><box><size>1.1599233334616201 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_47">
+        <pose>-9.816757915593882 24.199314791159022 0.101 0 0 -2.964040043663822</pose>
+        <visual name="v"><geometry><box><size>1.1599233334616201 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_48">
+        <pose>-10.57759909213749 22.478542283081584 0.05 0 0 -2.8508135886186428</pose>
+        <visual name="v"><geometry><box><size>1.1545797828012236 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1545797828012236 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_48">
+        <pose>-10.14755108340502 21.04151106902072 0.101 0 0 -2.8508135886186428</pose>
+        <visual name="v"><geometry><box><size>1.1545797828012236 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_48">
+        <pose>-11.00764710086996 23.915573497142447 0.101 0 0 -2.8508135886186428</pose>
+        <visual name="v"><geometry><box><size>1.1545797828012236 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_49">
+        <pose>-11.564134739912845 22.120149581188286 0.05 0 0 -2.7350585596842443</pose>
+        <visual name="v"><geometry><box><size>1.1517413086948736 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1517413086948736 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_49">
+        <pose>-10.970992311582869 20.742404300044193 0.101 0 0 -2.7350585596842443</pose>
+        <visual name="v"><geometry><box><size>1.1517413086948736 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_49">
+        <pose>-12.157277168242821 23.49789486233238 0.101 0 0 -2.7350585596842443</pose>
+        <visual name="v"><geometry><box><size>1.1517413086948736 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_50">
+        <pose>-12.499999999999995 21.65063509461097 0.05 0 0 -2.617993877991495</pose>
+        <visual name="v"><geometry><box><size>1.1517413086948864 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1517413086948864 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_50">
+        <pose>-11.749999999999995 20.35159698893431 0.101 0 0 -2.617993877991495</pose>
+        <visual name="v"><geometry><box><size>1.1517413086948864 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_50">
+        <pose>-13.249999999999995 22.949673200287627 0.101 0 0 -2.617993877991495</pose>
+        <visual name="v"><geometry><box><size>1.1517413086948864 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_51">
+        <pose>-13.374544102864345 21.07490924814482 0.05 0 0 -2.500929196298745</pose>
+        <visual name="v"><geometry><box><size>1.154579782801222 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.154579782801222 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_51">
+        <pose>-12.477952903614415 19.872360196576622 0.101 0 0 -2.500929196298745</pose>
+        <visual name="v"><geometry><box><size>1.154579782801222 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_51">
+        <pose>-14.271135302114274 22.277458299713018 0.101 0 0 -2.500929196298745</pose>
+        <visual name="v"><geometry><box><size>1.154579782801222 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_52">
+        <pose>-14.17818911112256 20.399740666379074 0.05 0 0 -2.385174167364346</pose>
+        <visual name="v"><geometry><box><size>1.1599233334616208 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1599233334616208 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_52">
+        <pose>-13.148707578080895 19.308792558939412 0.101 0 0 -2.385174167364346</pose>
+        <visual name="v"><geometry><box><size>1.1599233334616208 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_52">
+        <pose>-15.207670644164224 21.490688773818736 0.101 0 0 -2.385174167364346</pose>
+        <visual name="v"><geometry><box><size>1.1599233334616208 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_53">
+        <pose>-14.902692499186928 19.6335723009109 0.05 0 0 -2.271947712319167</pose>
+        <visual name="v"><geometry><box><size>1.167138017327711 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.167138017327711 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_53">
+        <pose>-13.75654259285057 18.66592546853601 0.101 0 0 -2.271947712319167</pose>
+        <visual name="v"><geometry><box><size>1.167138017327711 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_53">
+        <pose>-16.04884240552329 20.601219133285788 0.101 0 0 -2.271947712319167</pose>
+        <visual name="v"><geometry><box><size>1.167138017327711 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_54">
+        <pose>-15.541374296158736 18.7862943640492 0.05 0 0 -2.1623058705770606</pose>
+        <visual name="v"><geometry><box><size>1.1753487668691114 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1753487668691114 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_54">
+        <pose>-14.296224474126312 17.949872269235453 0.101 0 0 -2.1623058705770606</pose>
+        <visual name="v"><geometry><box><size>1.1753487668691114 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_54">
+        <pose>-16.78652411819116 19.62271645886295 0.101 0 0 -2.1623058705770606</pose>
+        <visual name="v"><geometry><box><size>1.1753487668691114 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_55">
+        <pose>-16.089302287180807 17.868980475012975 0.05 0 0 -2.0571004957771533</pose>
+        <visual name="v"><geometry><box><size>1.18351506717375 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.18351506717375 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_55">
+        <pose>-14.76320301351082 17.167937882603688 0.101 0 0 -2.0571004957771533</pose>
+        <visual name="v"><geometry><box><size>1.18351506717375 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_55">
+        <pose>-17.415401560850796 18.570023067422262 0.101 0 0 -2.0571004957771533</pose>
+        <visual name="v"><geometry><box><size>1.18351506717375 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_56">
+        <pose>-16.54342993522285 16.893594435666177 0.05 0 0 -1.956971722202753</pose>
+        <visual name="v"><geometry><box><size>1.1905118190557027 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1905118190557027 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_56">
+        <pose>-15.15389539210438 16.328622088129997 0.101 0 0 -1.956971722202753</pose>
+        <visual name="v"><geometry><box><size>1.1905118190557027 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_56">
+        <pose>-17.93296447834132 17.458566783202357 0.101 0 0 -1.956971722202753</pose>
+        <visual name="v"><geometry><box><size>1.1905118190557027 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_57">
+        <pose>-16.902683002891138 15.872675855733696 0.05 0 0 -1.8623690045230148</pose>
+        <visual name="v"><geometry><box><size>1.1952063372059114 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1952063372059114 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_57">
+        <pose>-15.465993532916633 15.44148753624397 0.101 0 0 -1.8623690045230148</pose>
+        <visual name="v"><geometry><box><size>1.1952063372059114 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_57">
+        <pose>-18.339372472865644 16.303864175223424 0.101 0 0 -1.8623690045230148</pose>
+        <visual name="v"><geometry><box><size>1.1952063372059114 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_58">
+        <pose>-17.167992285459267 14.819013419848407 0.05 0 0 -1.7735912666974067</pose>
+        <visual name="v"><geometry><box><size>1.1965258177165055 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1965258177165055 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_58">
+        <pose>-15.698731062850857 14.516901752183543 0.101 0 0 -1.7735912666974067</pose>
+        <visual name="v"><geometry><box><size>1.1965258177165055 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_58">
+        <pose>-18.637253508067676 15.12112508751327 0.101 0 0 -1.7735912666974067</pose>
+        <visual name="v"><geometry><box><size>1.1965258177165055 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_59">
+        <pose>-17.342271371838688 13.745314914786794 0.05 0 0 -1.6908364551421255</pose>
+        <visual name="v"><geometry><box><size>1.193512979184882 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.193512979184882 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_59">
+        <pose>-15.853065625036447 13.565686844343503 0.101 0 0 -1.6908364551421255</pose>
+        <visual name="v"><geometry><box><size>1.193512979184882 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_59">
+        <pose>-18.83147711864093 13.924942985230086 0.101 0 0 -1.6908364551421255</pose>
+        <visual name="v"><geometry><box><size>1.193512979184882 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_60">
+        <pose>-17.43033988749895 12.663883205856168 0.05 0 0 -1.6142531289958968</pose>
+        <visual name="v"><geometry><box><size>1.1853701260313516 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1853701260313516 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_60">
+        <pose>-15.931756034855614 12.59871851759128 0.101 0 0 -1.6142531289958968</pose>
+        <visual name="v"><geometry><box><size>1.1853701260313516 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_60">
+        <pose>-18.928923740142285 12.729047894121056 0.101 0 0 -1.6142531289958968</pose>
+        <visual name="v"><geometry><box><size>1.1853701260313516 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_61">
+        <pose>-17.438794199355147 11.586307164756125 0.05 0 0 -1.5439898973817647</pose>
+        <visual name="v"><geometry><box><size>1.1714934133066293 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1714934133066293 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_61">
+        <pose>-15.939333105576587 11.626511993376615 0.101 0 0 -1.5439898973817647</pose>
+        <visual name="v"><geometry><box><size>1.1714934133066293 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_61">
+        <pose>-18.938255293133707 11.546102336135634 0.101 0 0 -1.5439898973817647</pose>
+        <visual name="v"><geometry><box><size>1.1714934133066293 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_62">
+        <pose>-17.375829034621557 10.523176112706379 0.05 0 0 -1.480241322838563</pose>
+        <visual name="v"><geometry><box><size>1.1514998059888937 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1514998059888937 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_62">
+        <pose>-15.881974989612345 10.658823052257619 0.101 0 0 -1.480241322838563</pose>
+        <visual name="v"><geometry><box><size>1.1514998059888937 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_62">
+        <pose>-18.869683079630768 10.387529173155139 0.101 0 0 -1.480241322838563</pose>
+        <visual name="v"><geometry><box><size>1.1514998059888937 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_63">
+        <pose>-17.25101484234246 9.483825664624304 0.05 0 0 -1.423290815586551</pose>
+        <visual name="v"><geometry><box><size>1.1252494421990475 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1252494421990475 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_63">
+        <pose>-15.767303682848132 9.70428245220862 0.101 0 0 -1.423290815586551</pose>
+        <visual name="v"><geometry><box><size>1.1252494421990475 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_63">
+        <pose>-18.734726001836787 9.263368877039987 0.101 0 0 -1.423290815586551</pose>
+        <visual name="v"><geometry><box><size>1.1252494421990475 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_64">
+        <pose>-17.075036969170483 8.476121961764893 0.05 0 0 -1.3735519273138683</pose>
+        <visual name="v"><geometry><box><size>1.0928661026759772 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.0928661026759772 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_64">
+        <pose>-15.604121504957586 8.770073823707214 0.101 0 0 -1.3735519273138683</pose>
+        <visual name="v"><geometry><box><size>1.0928661026759772 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_64">
+        <pose>-18.54595243338338 8.18217009982257 0.101 0 0 -1.3735519273138683</pose>
+        <visual name="v"><geometry><box><size>1.0928661026759772 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_65">
+        <pose>-16.85940379512401 7.506290186788804 0.05 0 0 -1.3316092709886191</pose>
+        <visual name="v"><geometry><box><size>1.0547584072677882 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.0547584072677882 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_65">
+        <pose>-15.402107455875 7.861659543390406 0.101 0 0 -1.3316092709886191</pose>
+        <visual name="v"><geometry><box><size>1.0547584072677882 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_65">
+        <pose>-18.31670013437302 7.150920830187202 0.101 0 0 -1.3316092709886191</pose>
+        <visual name="v"><geometry><box><size>1.0547584072677882 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_66">
+        <pose>-16.616131850388218 6.578791997444607 0.05 0 0 -1.2982587562478198</pose>
+        <visual name="v"><geometry><box><size>1.0116441791364004 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.0116441791364004 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_66">
+        <pose>-15.171495433985495 6.982556315336983 0.101 0 0 -1.2982587562478198</pose>
+        <visual name="v"><geometry><box><size>1.0116441791364004 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_66">
+        <pose>-18.06076826679094 6.1750276795522305 0.101 0 0 -1.2982587562478198</pose>
+        <visual name="v"><geometry><box><size>1.0116441791364004 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_67">
+        <pose>-16.35741658615838 5.696255128284542 0.05 0 0 -1.2745431034344719</pose>
+        <visual name="v"><geometry><box><size>0.964579854375915 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.964579854375915 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_67">
+        <pose>-14.922761042534308 6.134163190723129 0.101 0 0 -1.2745431034344719</pose>
+        <visual name="v"><geometry><box><size>0.964579854375915 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_67">
+        <pose>-17.79207212978245 5.258347065845955 0.101 0 0 -1.2745431034344719</pose>
+        <visual name="v"><geometry><box><size>0.964579854375915 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_68">
+        <pose>-16.09529788273584 4.859456933026542 0.05 0 0 -1.2617710013660803</pose>
+        <visual name="v"><geometry><box><size>0.9149951303041128 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.9149951303041128 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_68">
+        <pose>-14.666352207165236 5.315652347589285 0.101 0 0 -1.2617710013660803</pose>
+        <visual name="v"><geometry><box><size>0.9149951303041128 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_68">
+        <pose>-17.52424355830644 4.403261518463799 0.101 0 0 -1.2617710013660803</pose>
+        <visual name="v"><geometry><box><size>0.9149951303041128 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_69">
+        <pose>-15.841329535015468 4.067362114796346 0.05 0 0 -1.2614942160098759</pose>
+        <visual name="v"><geometry><box><size>0.8647287213029902 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.8647287213029902 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_69">
+        <pose>-14.41251018238943 4.523953023117254 0.101 0 0 -1.2614942160098759</pose>
+        <visual name="v"><geometry><box><size>0.8647287213029902 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_69">
+        <pose>-17.270148887641504 3.6107712064754383 0.101 0 0 -1.2614942160098759</pose>
+        <visual name="v"><geometry><box><size>0.8647287213029902 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_70">
+        <pose>-15.606261854672466 3.3172133603512015 0.05 0 0 -1.27539420382801</pose>
+        <visual name="v"><geometry><box><size>0.8160515710137742 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.8160515710137742 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_70">
+        <pose>-14.171234126981151 3.7539002284352994 0.101 0 0 -1.27539420382801</pose>
+        <visual name="v"><geometry><box><size>0.8160515710137742 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_70">
+        <pose>-17.04128958236378 2.8805264922671037 0.101 0 0 -1.27539420382801</pose>
+        <visual name="v"><geometry><box><size>0.8160515710137742 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_71">
+        <pose>-15.399746172501798 2.6046721004727336 0.05 0 0 -1.305001974526081</pose>
+        <visual name="v"><geometry><box><size>0.7716463724455318 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.7716463724455318 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_71">
+        <pose>-13.952419950205815 2.9986858137549484 0.101 0 0 -1.305001974526081</pose>
+        <visual name="v"><geometry><box><size>0.7716463724455318 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_71">
+        <pose>-16.84707239479778 2.2106583871905188 0.101 0 0 -1.305001974526081</pose>
+        <visual name="v"><geometry><box><size>0.7716463724455318 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_72">
+        <pose>-15.230069423358321 1.9240052039439384 0.05 0 0 -1.351165945960906</pose>
+        <visual name="v"><geometry><box><size>0.734488332554481 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.734488332554481 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_72">
+        <pose>-13.766102356582353 2.2508085506149396 0.101 0 0 -1.351165945960906</pose>
+        <visual name="v"><geometry><box><size>0.734488332554481 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_72">
+        <pose>-16.69403649013429 1.5972018572729372 0.101 0 0 -1.351165945960906</pose>
+        <visual name="v"><geometry><box><size>0.734488332554481 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_73">
+        <pose>-15.10392616672012 1.2683121165901041 0.05 0 0 -1.4132555983762924</pose>
+        <visual name="v"><geometry><box><size>0.7075590026083243 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.7075590026083243 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_73">
+        <pose>-13.622502010215278 1.5036469175098122 0.101 0 0 -1.4132555983762924</pose>
+        <visual name="v"><geometry><box><size>0.7075590026083243 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_73">
+        <pose>-16.58535032322496 1.032977315670396 0.101 0 0 -1.4132555983762924</pose>
+        <visual name="v"><geometry><box><size>0.7075590026083243 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_74">
+        <pose>-15.026234361177144 0.6297858161245283 0.05 0 0 -1.488324638916461</pose>
+        <visual name="v"><geometry><box><size>0.6933651874997695 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.6933651874997695 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_74">
+        <pose>-13.531332654966164 0.7533531611939307 0.101 0 0 -1.488324638916461</pose>
+        <visual name="v"><geometry><box><size>0.6933651874997695 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_74">
+        <pose>-16.521136067388124 0.506218471055126 0.101 0 0 -1.488324638916461</pose>
+        <visual name="v"><geometry><box><size>0.6933651874997695 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_75">
+        <pose>-15.0 1.83697019872103e-15 0.05 0 0 -1.5707963267948963</pose>
+        <visual name="v"><geometry><box><size>0.6933651874997696 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.6933651874997696 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_75">
+        <pose>-13.5 2.2618856160446283e-15 0.101 0 0 -1.5707963267948963</pose>
+        <visual name="v"><geometry><box><size>0.6933651874997696 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_75">
+        <pose>-16.5 1.4120547813974315e-15 0.101 0 0 -1.5707963267948963</pose>
+        <visual name="v"><geometry><box><size>0.6933651874997696 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_76">
+        <pose>-15.026234361177144 -0.6297858161245247 0.05 0 0 -1.6532680146733318</pose>
+        <visual name="v"><geometry><box><size>0.7075590026083243 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.7075590026083243 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_76">
+        <pose>-13.531332654966164 -0.7533531611939266 0.101 0 0 -1.6532680146733318</pose>
+        <visual name="v"><geometry><box><size>0.7075590026083243 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_76">
+        <pose>-16.521136067388124 -0.5062184710551227 0.101 0 0 -1.6532680146733318</pose>
+        <visual name="v"><geometry><box><size>0.7075590026083243 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_77">
+        <pose>-15.10392616672012 -1.2683121165901003 0.05 0 0 -1.7283370552135005</pose>
+        <visual name="v"><geometry><box><size>0.7344883325544813 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.7344883325544813 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_77">
+        <pose>-13.622502010215278 -1.503646917509808 0.101 0 0 -1.7283370552135005</pose>
+        <visual name="v"><geometry><box><size>0.7344883325544813 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_77">
+        <pose>-16.58535032322496 -1.0329773156703927 0.101 0 0 -1.7283370552135005</pose>
+        <visual name="v"><geometry><box><size>0.7344883325544813 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_78">
+        <pose>-15.230069423358323 -1.9240052039439346 0.05 0 0 -1.790426707628887</pose>
+        <visual name="v"><geometry><box><size>0.7716463724455217 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.7716463724455217 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_78">
+        <pose>-13.766102356582355 -2.250808550614935 0.101 0 0 -1.790426707628887</pose>
+        <visual name="v"><geometry><box><size>0.7716463724455217 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_78">
+        <pose>-16.69403649013429 -1.597201857272934 0.101 0 0 -1.790426707628887</pose>
+        <visual name="v"><geometry><box><size>0.7716463724455217 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_79">
+        <pose>-15.399746172501793 -2.604672100472722 0.05 0 0 -1.8365906790637114</pose>
+        <visual name="v"><geometry><box><size>0.8160515710137829 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.8160515710137829 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_79">
+        <pose>-13.95241995020581 -2.9986858137549355 0.101 0 0 -1.8365906790637114</pose>
+        <visual name="v"><geometry><box><size>0.8160515710137829 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_79">
+        <pose>-16.847072394797777 -2.2106583871905086 0.101 0 0 -1.8365906790637114</pose>
+        <visual name="v"><geometry><box><size>0.8160515710137829 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_80">
+        <pose>-15.606261854672464 -3.317213360351197 0.05 0 0 -1.8661984497617832</pose>
+        <visual name="v"><geometry><box><size>0.8647287213030012 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.8647287213030012 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_80">
+        <pose>-14.171234126981147 -3.7539002284352945 0.101 0 0 -1.8661984497617832</pose>
+        <visual name="v"><geometry><box><size>0.8647287213030012 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_80">
+        <pose>-17.04128958236378 -2.8805264922670997 0.101 0 0 -1.8661984497617832</pose>
+        <visual name="v"><geometry><box><size>0.8647287213030012 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_81">
+        <pose>-15.841329535015472 -4.06736211479635 0.05 0 0 -1.8800984375799175</pose>
+        <visual name="v"><geometry><box><size>0.9149951303041044 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.9149951303041044 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_81">
+        <pose>-14.412510182389434 -4.523953023117258 0.101 0 0 -1.8800984375799175</pose>
+        <visual name="v"><geometry><box><size>0.9149951303041044 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_81">
+        <pose>-17.270148887641508 -3.6107712064754427 0.101 0 0 -1.8800984375799175</pose>
+        <visual name="v"><geometry><box><size>0.9149951303041044 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_82">
+        <pose>-16.095297882735842 -4.8594569330265385 0.05 0 0 -1.879821652223713</pose>
+        <visual name="v"><geometry><box><size>0.964579854375912 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.964579854375912 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_82">
+        <pose>-14.66635220716524 -5.315652347589282 0.101 0 0 -1.879821652223713</pose>
+        <visual name="v"><geometry><box><size>0.964579854375912 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_82">
+        <pose>-17.524243558306445 -4.403261518463795 0.101 0 0 -1.879821652223713</pose>
+        <visual name="v"><geometry><box><size>0.964579854375912 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_83">
+        <pose>-16.35741658615838 -5.696255128284537 0.05 0 0 -1.8670495501553215</pose>
+        <visual name="v"><geometry><box><size>1.0116441791364068 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.0116441791364068 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_83">
+        <pose>-14.922761042534308 -6.134163190723124 0.101 0 0 -1.8670495501553215</pose>
+        <visual name="v"><geometry><box><size>1.0116441791364068 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_83">
+        <pose>-17.79207212978245 -5.258347065845949 0.101 0 0 -1.8670495501553215</pose>
+        <visual name="v"><geometry><box><size>1.0116441791364068 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_84">
+        <pose>-16.616131850388214 -6.5787919974446085 0.05 0 0 -1.843333897341973</pose>
+        <visual name="v"><geometry><box><size>1.0547584072677796 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.0547584072677796 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_84">
+        <pose>-15.17149543398549 -6.982556315336984 0.101 0 0 -1.843333897341973</pose>
+        <visual name="v"><geometry><box><size>1.0547584072677796 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_84">
+        <pose>-18.060768266790937 -6.175027679552233 0.101 0 0 -1.843333897341973</pose>
+        <visual name="v"><geometry><box><size>1.0547584072677796 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_85">
+        <pose>-16.859403795124006 -7.506290186788798 0.05 0 0 -1.8099833826011744</pose>
+        <visual name="v"><geometry><box><size>1.0928661026759914 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.0928661026759914 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_85">
+        <pose>-15.402107455874997 -7.8616595433904 0.101 0 0 -1.8099833826011744</pose>
+        <visual name="v"><geometry><box><size>1.0928661026759914 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_85">
+        <pose>-18.316700134373015 -7.150920830187196 0.101 0 0 -1.8099833826011744</pose>
+        <visual name="v"><geometry><box><size>1.0928661026759914 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_86">
+        <pose>-17.075036969170487 -8.476121961764898 0.05 0 0 -1.7680407262759246</pose>
+        <visual name="v"><geometry><box><size>1.1252494421990193 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1252494421990193 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_86">
+        <pose>-15.60412150495759 -8.77007382370722 0.101 0 0 -1.7680407262759246</pose>
+        <visual name="v"><geometry><box><size>1.1252494421990193 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_86">
+        <pose>-18.545952433383384 -8.182170099822576 0.101 0 0 -1.7680407262759246</pose>
+        <visual name="v"><geometry><box><size>1.1252494421990193 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_87">
+        <pose>-17.251014842342457 -9.483825664624284 0.05 0 0 -1.7183018380032433</pose>
+        <visual name="v"><geometry><box><size>1.1514998059889099 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1514998059889099 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_87">
+        <pose>-15.767303682848128 -9.704282452208602 0.101 0 0 -1.7183018380032433</pose>
+        <visual name="v"><geometry><box><size>1.1514998059889099 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_87">
+        <pose>-18.734726001836783 -9.263368877039966 0.101 0 0 -1.7183018380032433</pose>
+        <visual name="v"><geometry><box><size>1.1514998059889099 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_88">
+        <pose>-17.375829034621557 -10.523176112706373 0.05 0 0 -1.6613513307512309</pose>
+        <visual name="v"><geometry><box><size>1.1714934133066408 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1714934133066408 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_88">
+        <pose>-15.881974989612345 -10.658823052257613 0.101 0 0 -1.6613513307512309</pose>
+        <visual name="v"><geometry><box><size>1.1714934133066408 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_88">
+        <pose>-18.869683079630768 -10.387529173155134 0.101 0 0 -1.6613513307512309</pose>
+        <visual name="v"><geometry><box><size>1.1714934133066408 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_89">
+        <pose>-17.438794199355144 -11.58630716475613 0.05 0 0 -1.5976027562080282</pose>
+        <visual name="v"><geometry><box><size>1.1853701260313378 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1853701260313378 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_89">
+        <pose>-15.939333105576583 -11.62651199337662 0.101 0 0 -1.5976027562080282</pose>
+        <visual name="v"><geometry><box><size>1.1853701260313378 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_89">
+        <pose>-18.938255293133704 -11.54610233613564 0.101 0 0 -1.5976027562080282</pose>
+        <visual name="v"><geometry><box><size>1.1853701260313378 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_90">
+        <pose>-17.430339887498953 -12.66388320585616 0.05 0 0 -1.527339524593897</pose>
+        <visual name="v"><geometry><box><size>1.1935129791848804 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1935129791848804 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_90">
+        <pose>-15.931756034855617 -12.598718517591273 0.101 0 0 -1.527339524593897</pose>
+        <visual name="v"><geometry><box><size>1.1935129791848804 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_90">
+        <pose>-18.928923740142288 -12.729047894121049 0.101 0 0 -1.527339524593897</pose>
+        <visual name="v"><geometry><box><size>1.1935129791848804 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_91">
+        <pose>-17.342271371838688 -13.745314914786785 0.05 0 0 -1.4507561984476685</pose>
+        <visual name="v"><geometry><box><size>1.1965258177164921 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1965258177164921 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_91">
+        <pose>-15.853065625036447 -13.565686844343494 0.101 0 0 -1.4507561984476685</pose>
+        <visual name="v"><geometry><box><size>1.1965258177164921 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_91">
+        <pose>-18.83147711864093 -13.924942985230077 0.101 0 0 -1.4507561984476685</pose>
+        <visual name="v"><geometry><box><size>1.1965258177164921 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_92">
+        <pose>-17.167992285459267 -14.819013419848385 0.05 0 0 -1.3680013868923881</pose>
+        <visual name="v"><geometry><box><size>1.1952063372059305 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1952063372059305 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_92">
+        <pose>-15.698731062850857 -14.516901752183525 0.101 0 0 -1.3680013868923881</pose>
+        <visual name="v"><geometry><box><size>1.1952063372059305 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_92">
+        <pose>-18.637253508067676 -15.121125087513246 0.101 0 0 -1.3680013868923881</pose>
+        <visual name="v"><geometry><box><size>1.1952063372059305 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_93">
+        <pose>-16.902683002891145 -15.872675855733695 0.05 0 0 -1.2792236490667785</pose>
+        <visual name="v"><geometry><box><size>1.190511819055716 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.190511819055716 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_93">
+        <pose>-15.465993532916638 -15.441487536243969 0.101 0 0 -1.2792236490667785</pose>
+        <visual name="v"><geometry><box><size>1.190511819055716 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_93">
+        <pose>-18.33937247286565 -16.30386417522342 0.101 0 0 -1.2792236490667785</pose>
+        <visual name="v"><geometry><box><size>1.190511819055716 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_94">
+        <pose>-16.543429935222846 -16.893594435666184 0.05 0 0 -1.1846209313870395</pose>
+        <visual name="v"><geometry><box><size>1.1835150671737222 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1835150671737222 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_94">
+        <pose>-15.153895392104376 -16.32862208813 0.101 0 0 -1.1846209313870395</pose>
+        <visual name="v"><geometry><box><size>1.1835150671737222 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_94">
+        <pose>-17.932964478341315 -17.458566783202368 0.101 0 0 -1.1846209313870395</pose>
+        <visual name="v"><geometry><box><size>1.1835150671737222 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_95">
+        <pose>-16.089302287180818 -17.86898047501296 0.05 0 0 -1.0844921578126414</pose>
+        <visual name="v"><geometry><box><size>1.1753487668691371 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1753487668691371 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_95">
+        <pose>-14.763203013510829 -17.167937882603677 0.101 0 0 -1.0844921578126414</pose>
+        <visual name="v"><geometry><box><size>1.1753487668691371 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_95">
+        <pose>-17.415401560850807 -18.570023067422245 0.101 0 0 -1.0844921578126414</pose>
+        <visual name="v"><geometry><box><size>1.1753487668691371 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_96">
+        <pose>-15.54137429615873 -18.786294364049205 0.05 0 0 -0.9792867830127321</pose>
+        <visual name="v"><geometry><box><size>1.167138017327685 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.167138017327685 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_96">
+        <pose>-14.296224474126307 -17.949872269235453 0.101 0 0 -0.9792867830127321</pose>
+        <visual name="v"><geometry><box><size>1.167138017327685 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_96">
+        <pose>-16.786524118191153 -19.622716458862957 0.101 0 0 -0.9792867830127321</pose>
+        <visual name="v"><geometry><box><size>1.167138017327685 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_97">
+        <pose>-14.902692499186939 -19.633572300910885 0.05 0 0 -0.8696449412706284</pose>
+        <visual name="v"><geometry><box><size>1.1599233334616226 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1599233334616226 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_97">
+        <pose>-13.756542592850577 -18.665925468536 0.101 0 0 -0.8696449412706284</pose>
+        <visual name="v"><geometry><box><size>1.1599233334616226 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_97">
+        <pose>-16.0488424055233 -20.60121913328577 0.101 0 0 -0.8696449412706284</pose>
+        <visual name="v"><geometry><box><size>1.1599233334616226 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_98">
+        <pose>-14.178189111122572 -20.399740666379063 0.05 0 0 -0.7564184862254496</pose>
+        <visual name="v"><geometry><box><size>1.1545797828012574 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1545797828012574 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_98">
+        <pose>-13.148707578080904 -19.308792558939402 0.101 0 0 -0.7564184862254496</pose>
+        <visual name="v"><geometry><box><size>1.1545797828012574 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_98">
+        <pose>-15.20767064416424 -21.490688773818725 0.101 0 0 -0.7564184862254496</pose>
+        <visual name="v"><geometry><box><size>1.1545797828012574 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_99">
+        <pose>-13.37454410286433 -21.074909248144827 0.05 0 0 -0.6406634572910471</pose>
+        <visual name="v"><geometry><box><size>1.151741308694848 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.151741308694848 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_99">
+        <pose>-12.477952903614403 -19.87236019657663 0.101 0 0 -0.6406634572910471</pose>
+        <visual name="v"><geometry><box><size>1.151741308694848 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_99">
+        <pose>-14.271135302114258 -22.277458299713025 0.101 0 0 -0.6406634572910471</pose>
+        <visual name="v"><geometry><box><size>1.151741308694848 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_100">
+        <pose>-12.50000000000001 -21.65063509461096 0.05 0 0 -0.5235987755982997</pose>
+        <visual name="v"><geometry><box><size>1.1517413086948736 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1517413086948736 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_100">
+        <pose>-11.750000000000009 -20.3515969889343 0.101 0 0 -0.5235987755982997</pose>
+        <visual name="v"><geometry><box><size>1.1517413086948736 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_100">
+        <pose>-13.250000000000012 -22.949673200287616 0.101 0 0 -0.5235987755982997</pose>
+        <visual name="v"><geometry><box><size>1.1517413086948736 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_101">
+        <pose>-11.564134739912861 -22.120149581188276 0.05 0 0 -0.4065340939055513</pose>
+        <visual name="v"><geometry><box><size>1.15457978280126 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.15457978280126 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_101">
+        <pose>-10.970992311582881 -20.742404300044182 0.101 0 0 -0.4065340939055513</pose>
+        <visual name="v"><geometry><box><size>1.15457978280126 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_101">
+        <pose>-12.15727716824284 -23.49789486233237 0.101 0 0 -0.4065340939055513</pose>
+        <visual name="v"><geometry><box><size>1.15457978280126 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_102">
+        <pose>-10.577599092137476 -22.478542283081588 0.05 0 0 -0.29077906497114875</pose>
+        <visual name="v"><geometry><box><size>1.1599233334615973 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1599233334615973 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_102">
+        <pose>-10.147551083405007 -21.041511069020725 0.101 0 0 -0.29077906497114875</pose>
+        <visual name="v"><geometry><box><size>1.1599233334615973 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_102">
+        <pose>-11.007647100869944 -23.91557349714245 0.101 0 0 -0.29077906497114875</pose>
+        <visual name="v"><geometry><box><size>1.1599233334615973 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_103">
+        <pose>-9.551826130033872 -22.72289643953913 0.05 0 0 -0.1775526099259718</pose>
+        <visual name="v"><geometry><box><size>1.1671380173277086 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1671380173277086 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_103">
+        <pose>-9.286894344473856 -21.246478087919243 0.101 0 0 -0.1775526099259718</pose>
+        <visual name="v"><geometry><box><size>1.1671380173277086 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_103">
+        <pose>-9.816757915593888 -24.19931479115902 0.101 0 0 -0.1775526099259718</pose>
+        <visual name="v"><geometry><box><size>1.1671380173277086 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_104">
+        <pose>-8.498721014159672 -22.852372132220562 0.05 0 0 -0.06791076818386536</pose>
+        <visual name="v"><geometry><box><size>1.1753487668691263 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1753487668691263 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_104">
+        <pose>-8.396933142780581 -21.355829707415936 0.101 0 0 -0.06791076818386536</pose>
+        <visual name="v"><geometry><box><size>1.1753487668691263 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_104">
+        <pose>-8.600508885538764 -24.34891455702519 0.101 0 0 -0.06791076818386536</pose>
+        <visual name="v"><geometry><box><size>1.1753487668691263 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_105">
+        <pose>-7.430339887498952 -22.868234747372135 0.05 0 0 0.03729460661604278</pose>
+        <visual name="v"><geometry><box><size>1.183515067173734 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.183515067173734 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_105">
+        <pose>-7.486268830172605 -21.36927779222919 0.101 0 0 0.03729460661604278</pose>
+        <visual name="v"><geometry><box><size>1.183515067173734 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_105">
+        <pose>-7.374410944825298 -24.36719170251508 0.101 0 0 0.03729460661604278</pose>
+        <visual name="v"><geometry><box><size>1.183515067173734 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_106">
+        <pose>-6.358566974906929 -22.773827807464027 0.05 0 0 0.13742338019044129</pose>
+        <visual name="v"><geometry><box><size>1.1905118190557142 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1905118190557142 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_106">
+        <pose>-6.564053841064099 -21.28796941991934 0.101 0 0 0.13742338019044129</pose>
+        <visual name="v"><geometry><box><size>1.1905118190557142 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_106">
+        <pose>-6.1530801087497595 -24.259686195008715 0.101 0 0 0.13742338019044129</pose>
+        <visual name="v"><geometry><box><size>1.1905118190557142 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_107">
+        <pose>-5.294799015655712 -22.574490800486018 0.05 0 0 0.23202609787018105</pose>
+        <visual name="v"><geometry><box><size>1.1952063372059158 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1952063372059158 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_107">
+        <pose>-5.639723712149742 -21.11468706239363 0.101 0 0 0.23202609787018105</pose>
+        <visual name="v"><geometry><box><size>1.1952063372059158 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_107">
+        <pose>-4.949874319161681 -24.034294538578404 0.101 0 0 0.23202609787018105</pose>
+        <visual name="v"><geometry><box><size>1.1952063372059158 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_108">
+        <pose>-4.249645937881592 -22.277424161107188 0.05 0 0 0.32080383569578946</pose>
+        <visual name="v"><geometry><box><size>1.1965258177165046 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1965258177165046 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_108">
+        <pose>-4.7226401702083445 -20.85395078370049 0.101 0 0 0.32080383569578946</pose>
+        <visual name="v"><geometry><box><size>1.1965258177165046 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_108">
+        <pose>-3.77665170555484 -23.700897538513885 0.101 0 0 0.32080383569578946</pose>
+        <visual name="v"><geometry><box><size>1.1965258177165046 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_109">
+        <pose>-3.2326562133031507 -21.891505024729305 0.05 0 0 0.40355864725107043</pose>
+        <visual name="v"><geometry><box><size>1.193512979184859 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.193512979184859 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_109">
+        <pose>-3.8216966144676 -20.512000981315143 0.101 0 0 0.40355864725107043</pose>
+        <visual name="v"><geometry><box><size>1.193512979184859 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_109">
+        <pose>-2.6436158121387012 -23.271009068143467 0.101 0 0 0.40355864725107043</pose>
+        <visual name="v"><geometry><box><size>1.193512979184859 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_110">
+        <pose>-2.2520746230810986 -21.427058742099373 0.05 0 0 0.4801419733972976</pose>
+        <visual name="v"><geometry><box><size>1.1853701260313734 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1853701260313734 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_110">
+        <pose>-2.9449322739356774 -20.096664711876645 0.101 0 0 0.4801419733972976</pose>
+        <visual name="v"><geometry><box><size>1.1853701260313734 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_110">
+        <pose>-1.55921697222652 -22.7574527723221 0.101 0 0 0.4801419733972976</pose>
+        <visual name="v"><geometry><box><size>1.1853701260313734 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_111">
+        <pose>-1.3146392410508807 -20.895592370388325 0.05 0 0 0.5504052050114311</pose>
+        <visual name="v"><geometry><box><size>1.1714934133066293 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1714934133066293 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_111">
+        <pose>-2.099188190880306 -19.617123385499937 0.101 0 0 0.5504052050114311</pose>
+        <visual name="v"><geometry><box><size>1.1714934133066293 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_111">
+        <pose>-0.5300902912214551 -22.174061355276713 0.101 0 0 0.5504052050114311</pose>
+        <visual name="v"><geometry><box><size>1.1714934133066293 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_112">
+        <pose>-0.42542332479051936 -20.30949741215069 0.05 0 0 0.614153779554633</pose>
+        <visual name="v"><geometry><box><size>1.1514998059888797 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1514998059888797 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_112">
+        <pose>-1.2898240428921106 -19.083605329402193 0.101 0 0 0.614153779554633</pose>
+        <visual name="v"><geometry><box><size>1.1514998059888797 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_112">
+        <pose>0.438977393311072 -21.53538949489919 0.101 0 0 0.614153779554633</pose>
+        <visual name="v"><geometry><box><size>1.1514998059888797 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_113">
+        <pose>0.41227347054374264 -19.681729926843133 0.05 0 0 0.6711042868066445</pose>
+        <visual name="v"><geometry><box><size>1.125249442199038 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.125249442199038 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_113">
+        <pose>-0.5205032876881489 -18.507026764634738 0.101 0 0 0.6711042868066445</pose>
+        <visual name="v"><geometry><box><size>1.125249442199038 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_113">
+        <pose>1.345050228775634 -20.856433089051528 0.101 0 0 0.6711042868066445</pose>
+        <visual name="v"><geometry><box><size>1.125249442199038 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_114">
+        <pose>1.196981540121641 -19.025476766742543 0.05 0 0 0.7208431750793264</pose>
+        <visual name="v"><geometry><box><size>1.0928661026760036 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.0928661026760036 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_114">
+        <pose>0.20695402808340657 -17.898602538885953 0.101 0 0 0.7208431750793264</pose>
+        <visual name="v"><geometry><box><size>1.0928661026760036 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_114">
+        <pose>2.1870090521598753 -20.152350994599132 0.101 0 0 0.7208431750793264</pose>
+        <visual name="v"><geometry><box><size>1.0928661026760036 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_115">
+        <pose>1.9290639076250644 -18.35381707263156 0.05 0 0 0.7627858314045766</pose>
+        <visual name="v"><geometry><box><size>1.054758407267773 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.054758407267773 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_115">
+        <pose>0.8926568474570413 -17.269446100300655 0.101 0 0 0.7627858314045766</pose>
+        <visual name="v"><geometry><box><size>1.054758407267773 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_115">
+        <pose>2.9654709677930873 -19.438188044962466 0.101 0 0 0.7627858314045766</pose>
+        <visual name="v"><geometry><box><size>1.054758407267773 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_116">
+        <pose>2.6106649291933066 -17.679388293790236 0.05 0 0 0.7961363461453753</pose>
+        <visual name="v"><geometry><box><size>1.0116441791363973 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.0116441791363973 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_116">
+        <pose>1.5386765645554514 -16.63017861689955 0.101 0 0 0.7961363461453753</pose>
+        <visual name="v"><geometry><box><size>1.0116441791363973 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_116">
+        <pose>3.682653293831162 -18.728597970680923 0.101 0 0 0.7961363461453753</pose>
+        <visual name="v"><geometry><box><size>1.0116441791363973 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_117">
+        <pose>3.2456066455473884 -17.014065868040365 0.05 0 0 0.8198519989587237</pose>
+        <visual name="v"><geometry><box><size>0.964579854375917 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.964579854375917 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_117">
+        <pose>2.1490393671415133 -15.990571752801038 0.101 0 0 0.8198519989587237</pose>
+        <visual name="v"><geometry><box><size>0.964579854375917 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_117">
+        <pose>4.342173923953263 -18.037559983279692 0.101 0 0 0.8198519989587237</pose>
+        <visual name="v"><geometry><box><size>0.964579854375917 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_118">
+        <pose>3.839235788770516 -16.368665314440403 0.05 0 0 0.8326241010271148</pose>
+        <visual name="v"><geometry><box><size>0.9149951303041162 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.9149951303041162 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_118">
+        <pose>2.7296861328839057 -15.359259766049716 0.101 0 0 0.8326241010271148</pose>
+        <visual name="v"><geometry><box><size>0.9149951303041162 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_118">
+        <pose>4.948785444657126 -17.37807086283109 0.101 0 0 0.8326241010271148</pose>
+        <visual name="v"><geometry><box><size>0.9149951303041162 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_119">
+        <pose>4.398225849703698 -15.7526748644423 0.05 0 0 0.8329008863833195</pose>
+        <visual name="v"><geometry><box><size>0.8647287213029898 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.8647287213029898 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_119">
+        <pose>3.2883968476477614 -14.74357646180977 0.101 0 0 0.8329008863833195</pose>
+        <visual name="v"><geometry><box><size>0.8647287213029898 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_119">
+        <pose>5.508054851759634 -16.76177326707483 0.101 0 0 0.8329008863833195</pose>
+        <visual name="v"><geometry><box><size>0.8647287213029898 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_120">
+        <pose>4.9303398874989455 -15.174025904434007 0.05 0 0 0.8190008985651853</pose>
+        <visual name="v"><geometry><box><size>0.8160515710137803 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.8160515710137803 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_120">
+        <pose>3.834644102393395 -14.149598871160318 0.101 0 0 0.8190008985651853</pose>
+        <visual name="v"><geometry><box><size>0.8160515710137803 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_120">
+        <pose>6.026035672604496 -16.198452937707696 0.101 0 0 0.8190008985651853</pose>
+        <visual name="v"><geometry><box><size>0.8160515710137803 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_121">
+        <pose>5.444160878712941 -14.6389074474551 0.05 0 0 0.7893931278671149</pose>
+        <visual name="v"><geometry><box><size>0.7716463724455348 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.7716463724455348 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_121">
+        <pose>4.379271882423113 -13.582493028024523 0.101 0 0 0.7893931278671149</pose>
+        <visual name="v"><geometry><box><size>0.7716463724455348 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_121">
+        <pose>6.509049875002768 -15.695321866885678 0.101 0 0 0.7893931278671149</pose>
+        <visual name="v"><geometry><box><size>0.7716463724455348 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_122">
+        <pose>5.948797328050253 -14.151629624000888 0.05 0 0 0.7432291564322886</pose>
+        <visual name="v"><geometry><box><size>0.7344883325544567 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.7344883325544567 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_122">
+        <pose>4.93379379440341 -13.04719862720461 0.101 0 0 0.7432291564322886</pose>
+        <visual name="v"><geometry><box><size>0.7344883325544567 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_122">
+        <pose>6.963800861697095 -15.256060620797166 0.101 0 0 0.7432291564322886</pose>
+        <visual name="v"><geometry><box><size>0.7344883325544567 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_123">
+        <pose>6.453572570465406 -13.714539815559204 0.05 0 0 0.6811395040169054</pose>
+        <visual name="v"><geometry><box><size>0.707559002608347 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.707559002608347 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_123">
+        <pose>5.509054576221962 -12.549256262705933 0.101 0 0 0.6811395040169054</pose>
+        <visual name="v"><geometry><box><size>0.707559002608347 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_123">
+        <pose>7.39809056470885 -14.879823368412476 0.101 0 0 0.6811395040169054</pose>
+        <visual name="v"><geometry><box><size>0.707559002608347 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_124">
+        <pose>6.967706664881618 -13.327993588060306 0.05 0 0 0.6060704634767349</pose>
+        <visual name="v"><geometry><box><size>0.6933651874997708 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.6933651874997708 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_124">
+        <pose>6.113243351867827 -12.095154406855597 0.101 0 0 0.6060704634767349</pose>
+        <visual name="v"><geometry><box><size>0.6933651874997708 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_124">
+        <pose>7.822169977895409 -14.560832769265014 0.101 0 0 0.6060704634767349</pose>
+        <visual name="v"><geometry><box><size>0.6933651874997708 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_125">
+        <pose>7.500000000000002 -12.990381056766578 0.05 0 0 0.5235987755982997</pose>
+        <visual name="v"><geometry><box><size>0.6933651874997535 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.6933651874997535 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_125">
+        <pose>6.750000000000001 -11.69134295108992 0.101 0 0 0.5235987755982997</pose>
+        <visual name="v"><geometry><box><size>0.6933651874997535 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_125">
+        <pose>8.250000000000004 -14.289419162443236 0.101 0 0 0.5235987755982997</pose>
+        <visual name="v"><geometry><box><size>0.6933651874997535 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_126">
+        <pose>8.058527696295517 -12.698207771935786 0.05 0 0 0.4411270877198633</pose>
+        <visual name="v"><geometry><box><size>0.7075590026083473 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.7075590026083473 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_126">
+        <pose>7.418089303098327 -11.341801245661674 0.101 0 0 0.4411270877198633</pose>
+        <visual name="v"><geometry><box><size>0.7075590026083473 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_126">
+        <pose>8.698966089492707 -14.054614298209898 0.101 0 0 0.4411270877198633</pose>
+        <visual name="v"><geometry><box><size>0.7075590026083473 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_127">
+        <pose>8.650353596254709 -12.44622769896909 0.05 0 0 0.36605804717969276</pose>
+        <visual name="v"><geometry><box><size>0.7344883325544719 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.7344883325544719 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_127">
+        <pose>8.113447433993311 -11.045609345196107 0.101 0 0 0.36605804717969276</pose>
+        <visual name="v"><geometry><box><size>0.7344883325544719 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_127">
+        <pose>9.187259758516106 -13.846846052742071 0.101 0 0 0.36605804717969276</pose>
+        <visual name="v"><geometry><box><size>0.7344883325544719 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_128">
+        <pose>9.28127209530807 -12.227624420056955 0.05 0 0 0.30396839476430887</pose>
+        <visual name="v"><geometry><box><size>0.7716463724455166 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.7716463724455166 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_128">
+        <pose>8.832308562178945 -10.796390076589676 0.101 0 0 0.30396839476430887</pose>
+        <visual name="v"><geometry><box><size>0.7716463724455166 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_128">
+        <pose>9.730235628437196 -13.658858763524234 0.101 0 0 0.30396839476430887</pose>
+        <visual name="v"><geometry><box><size>0.7716463724455166 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_129">
+        <pose>9.955585293788847 -12.034235346982374 0.05 0 0 0.25780442332948283</pose>
+        <visual name="v"><geometry><box><size>0.8160515710137942 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.8160515710137942 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_129">
+        <pose>9.573148067782691 -10.583807214269582 0.101 0 0 0.25780442332948283</pose>
+        <visual name="v"><geometry><box><size>0.8160515710137942 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_129">
+        <pose>10.338022519795002 -13.484663479695167 0.101 0 0 0.25780442332948283</pose>
+        <visual name="v"><geometry><box><size>0.8160515710137942 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_130">
+        <pose>10.675921967173519 -11.856812544082798 0.05 0 0 0.22819665263141317</pose>
+        <visual name="v"><geometry><box><size>0.8647287213029772 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.8647287213029772 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_130">
+        <pose>10.336590024587752 -10.395698642725012 0.101 0 0 0.22819665263141317</pose>
+        <visual name="v"><geometry><box><size>0.8647287213029772 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_130">
+        <pose>11.015253909759286 -13.317926445440584 0.101 0 0 0.22819665263141317</pose>
+        <visual name="v"><geometry><box><size>0.8647287213029772 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_131">
+        <pose>11.44310368531176 -11.685312749645956 0.05 0 0 0.21429666481327805</pose>
+        <visual name="v"><geometry><box><size>0.914995130304108 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.914995130304108 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_131">
+        <pose>11.12411333474166 -10.219623438692517 0.101 0 0 0.21429666481327805</pose>
+        <visual name="v"><geometry><box><size>0.914995130304108 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_131">
+        <pose>11.76209403588186 -13.151002060599394 0.101 0 0 0.21429666481327805</pose>
+        <visual name="v"><geometry><box><size>0.914995130304108 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_132">
+        <pose>12.256062093965307 -11.509208381413853 0.05 0 0 0.2145734501694828</pose>
+        <visual name="v"><geometry><box><size>0.9645798543759153 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>0.9645798543759153 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_132">
+        <pose>11.936666074281314 -10.043607418460422 0.101 0 0 0.2145734501694828</pose>
+        <visual name="v"><geometry><box><size>0.9645798543759153 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_132">
+        <pose>12.575458113649299 -12.974809344367284 0.101 0 0 0.2145734501694828</pose>
+        <visual name="v"><geometry><box><size>0.9645798543759153 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_133">
+        <pose>13.111809940610977 -11.317810739755814 0.05 0 0 0.22734555223787425</pose>
+        <visual name="v"><geometry><box><size>1.0116441791364041 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.0116441791364041 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_133">
+        <pose>12.77372167539278 -9.856408562077899 0.101 0 0 0.22734555223787425</pose>
+        <visual name="v"><geometry><box><size>1.0116441791364041 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_133">
+        <pose>13.449898205829173 -12.779212917433728 0.101 0 0 0.22734555223787425</pose>
+        <visual name="v"><geometry><box><size>1.0116441791364041 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_134">
+        <pose>14.0054669211949 -11.10059629634563 0.05 0 0 0.25106120505122187</pose>
+        <visual name="v"><geometry><box><size>1.0547584072677958 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.0547584072677958 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_134">
+        <pose>13.632818869430032 -9.647622301562569 0.101 0 0 0.25106120505122187</pose>
+        <visual name="v"><geometry><box><size>1.0547584072677958 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_134">
+        <pose>14.378114972959768 -12.553570291128691 0.101 0 0 0.25106120505122187</pose>
+        <visual name="v"><geometry><box><size>1.0547584072677958 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_135">
+        <pose>14.930339887498945 -10.847526885842765 0.05 0 0 0.2844117197920213</pose>
+        <visual name="v"><geometry><box><size>1.0928661026759754 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.0928661026759754 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_135">
+        <pose>14.509450608417959 -9.407786556910256 0.101 0 0 0.2844117197920213</pose>
+        <visual name="v"><geometry><box><size>1.0928661026759754 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_135">
+        <pose>15.351229166579932 -12.287267214775273 0.101 0 0 0.2844117197920213</pose>
+        <visual name="v"><geometry><box><size>1.0928661026759754 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_136">
+        <pose>15.878055429048826 -10.549354804977638 0.05 0 0 0.3263543761172706</pose>
+        <visual name="v"><geometry><box><size>1.1252494421990478 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1252494421990478 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_136">
+        <pose>15.397167476874165 -9.128528715178728 0.101 0 0 0.3263543761172706</pose>
+        <visual name="v"><geometry><box><size>1.1252494421990478 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_136">
+        <pose>16.358943381223487 -11.970180894776547 0.101 0 0 0.3263543761172706</pose>
+        <visual name="v"><geometry><box><size>1.1252494421990478 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_137">
+        <pose>16.838741371798715 -10.197904262218833 0.05 0 0 0.37609326438995266</pose>
+        <visual name="v"><geometry><box><size>1.1514998059889001 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1514998059889001 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_137">
+        <pose>16.28780697053628 -8.802744312426121 0.101 0 0 0.37609326438995266</pose>
+        <visual name="v"><geometry><box><size>1.1514998059889001 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_137">
+        <pose>17.38967577306115 -11.593064212011544 0.101 0 0 0.37609326438995266</pose>
+        <visual name="v"><geometry><box><size>1.1514998059889001 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_138">
+        <pose>17.801252359412082 -9.78632129944432 0.05 0 0 0.43304377164196517</pose>
+        <visual name="v"><geometry><box><size>1.1714934133066284 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1714934133066284 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_138">
+        <pose>17.171799032504463 -8.42478227714458 0.101 0 0 0.43304377164196517</pose>
+        <visual name="v"><geometry><box><size>1.1714934133066284 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_138">
+        <pose>18.4307056863197 -11.147860321744059 0.101 0 0 0.43304377164196517</pose>
+        <visual name="v"><geometry><box><size>1.1714934133066284 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_139">
+        <pose>18.75343344040603 -9.309285205632204 0.05 0 0 0.4967923461851671</pose>
+        <visual name="v"><geometry><box><size>1.1853701260313456 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1853701260313456 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_139">
+        <pose>18.038521296456896 -7.990611392123324 0.101 0 0 0.4967923461851671</pose>
+        <visual name="v"><geometry><box><size>1.1853701260313456 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_139">
+        <pose>19.468345584355166 -10.627959019141084 0.101 0 0 0.4967923461851671</pose>
+        <visual name="v"><geometry><box><size>1.1853701260313456 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_140">
+        <pose>19.682414510580028 -8.7631755362432 0.05 0 0 0.5670555777992988</pose>
+        <visual name="v"><geometry><box><size>1.193512979184859 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.193512979184859 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_140">
+        <pose>18.876688308791273 -7.49794619428536 0.101 0 0 0.5670555777992988</pose>
+        <visual name="v"><geometry><box><size>1.193512979184859 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_140">
+        <pose>20.488140712368782 -10.028404878201039 0.101 0 0 0.5670555777992988</pose>
+        <visual name="v"><geometry><box><size>1.193512979184859 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_141">
+        <pose>20.574927585141825 -8.14619010994253 0.05 0 0 0.643638903945526</pose>
+        <visual name="v"><geometry><box><size>1.1965258177165055 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1965258177165055 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_141">
+        <pose>19.674762239504034 -6.946314136971658 0.101 0 0 0.643638903945526</pose>
+        <visual name="v"><geometry><box><size>1.1965258177165055 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_141">
+        <pose>21.475092930779617 -9.346066082913403 0.101 0 0 0.643638903945526</pose>
+        <visual name="v"><geometry><box><size>1.1965258177165055 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_142">
+        <pose>21.417638223340845 -7.458410741258802 0.05 0 0 0.7263937155008071</pose>
+        <visual name="v"><geometry><box><size>1.195206337205942 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.195206337205942 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_142">
+        <pose>20.42137123305919 -6.337049031516966 0.101 0 0 0.7263937155008071</pose>
+        <visual name="v"><geometry><box><size>1.195206337205942 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_142">
+        <pose>22.4139052136225 -8.579772451000636 0.101 0 0 0.7263937155008071</pose>
+        <visual name="v"><geometry><box><size>1.195206337205942 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_143">
+        <pose>22.197482018546857 -6.701814944752318 0.05 0 0 0.815171453326417</pose>
+        <visual name="v"><geometry><box><size>1.1905118190556854 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1905118190556854 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_143">
+        <pose>21.10571724506638 -5.673199526149658 0.101 0 0 0.815171453326417</pose>
+        <visual name="v"><geometry><box><size>1.1905118190556854 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_143">
+        <pose>23.289246792027335 -7.730430363354977 0.101 0 0 0.815171453326417</pose>
+        <visual name="v"><geometry><box><size>1.1905118190556854 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_144">
+        <pose>22.901996910129757 -5.880233371797855 0.05 0 0 0.9097741710061537</pose>
+        <visual name="v"><geometry><box><size>1.183515067173741 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.183515067173741 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_144">
+        <pose>21.71794923316846 -4.9593473317893455 0.101 0 0 0.9097741710061537</pose>
+        <visual name="v"><geometry><box><size>1.183515067173741 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_144">
+        <pose>24.086044587091052 -6.801119411806365 0.101 0 0 0.9097741710061537</pose>
+        <visual name="v"><geometry><box><size>1.183515067173741 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_145">
+        <pose>23.51964217467976 -4.999254272359185 0.05 0 0 1.0099029445805539</pose>
+        <visual name="v"><geometry><box><size>1.175348766869148 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.175348766869148 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_145">
+        <pose>22.249471843683427 -4.201339909625523 0.101 0 0 1.0099029445805539</pose>
+        <visual name="v"><geometry><box><size>1.175348766869148 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_145">
+        <pose>24.789812505676093 -5.797168635092846 0.101 0 0 1.0099029445805539</pose>
+        <visual name="v"><geometry><box><size>1.175348766869148 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_146">
+        <pose>24.040095310318407 -4.066077768171354 0.05 0 0 1.1151083193804645</pose>
+        <visual name="v"><geometry><box><size>1.167138017327684 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.167138017327684 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_146">
+        <pose>22.693157616906888 -3.405957438180479 0.101 0 0 1.1151083193804645</pose>
+        <visual name="v"><geometry><box><size>1.167138017327684 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_146">
+        <pose>25.387033003729925 -4.72619809816223 0.101 0 0 1.1151083193804645</pose>
+        <visual name="v"><geometry><box><size>1.167138017327684 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_147">
+        <pose>24.454518629220786 -3.0893241386282453 0.05 0 0 1.2247501611225673</pose>
+        <visual name="v"><geometry><box><size>1.1599233334616215 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1599233334616215 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_147">
+        <pose>23.04343693732441 -2.580552619383245 0.101 0 0 1.2247501611225673</pose>
+        <visual name="v"><geometry><box><size>1.1599233334616215 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_147">
+        <pose>25.86560032111716 -3.5980956578732455 0.101 0 0 1.2247501611225673</pose>
+        <visual name="v"><geometry><box><size>1.1599233334616215 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_148">
+        <pose>24.75578820326005 -2.078801616702521 0.05 0 0 1.337976616167748</pose>
+        <visual name="v"><geometry><box><size>1.1545797828012354 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.1545797828012354 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_148">
+        <pose>23.296258661485915 -1.732718510081321 0.101 0 0 1.337976616167748</pose>
+        <visual name="v"><geometry><box><size>1.1545797828012354 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_148">
+        <pose>26.215317745034184 -2.424884723323721 0.101 0 0 1.337976616167748</pose>
+        <visual name="v"><geometry><box><size>1.1545797828012354 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="asphalt_149">
+        <pose>24.93867884277719 -1.045240333043467 0.05 0 0 1.4537316451021476</pose>
+        <visual name="v"><geometry><box><size>1.151741308694873 4.0 0.1</size></box></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.151741308694873 4.0 0.1</size></box></geometry></collision>
+      </link>
+      <link name="left_line_149">
+        <pose>23.448945215197284 -0.8700441034675723 0.101 0 0 1.4537316451021476</pose>
+        <visual name="v"><geometry><box><size>1.151741308694873 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+      <link name="right_line_149">
+        <pose>26.428412470357095 -1.2204365626193616 0.101 0 0 1.4537316451021476</pose>
+        <visual name="v"><geometry><box><size>1.151741308694873 0.15 0.001</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient><emissive>0.3 0.3 0.3 1</emissive></material></visual>
+      </link>
+    </model>
+  </world>
+</sdf>
